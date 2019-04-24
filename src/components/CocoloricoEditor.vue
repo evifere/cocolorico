@@ -3,7 +3,7 @@
   <el-aside width="508px" v-show="!isEditable">
         <img  width="500" height="700" ref="preview" src="" />
   </el-aside>
-  <el-aside width="525px" v-show="isEditable" >
+  <el-aside width="1225px" v-show="isEditable" >
         <canvas  id='background' tabindex="0" ></canvas>
   </el-aside>
   <el-container>
@@ -39,7 +39,7 @@
             </el-col>
           </el-row>
           <el-row class="empty"></el-row>
-          <el-row>
+          <!--el-row>
             <el-col :span="6" class="col-label col-text-left"><label>Un logo logo dans la case avec ma frame !</label></el-col>
             <el-col :span="6">
               <el-select v-model="logo" placeholder="Ton logo c'est ici !" v-bind:disabled="!isEditable">
@@ -56,27 +56,27 @@
                 <template slot="prepend">Logo perso</template>
               </el-input>
             </el-col>
-            </el-row>
+            </el-row-->
             <el-row>
               <el-col :span="18">
               <el-input placeholder="https://openclipart.org/image/300px/svg_to_png/304284/1531920272.png" v-model="newImageUrl">
-                <template slot="prepend">Ajouter une image</template>
+                <template slot="prepend">Ajouter une image externe</template>
               </el-input>
               </el-col>
               <el-button icon="el-icon-circle-plus" type="success" v-bind:disabled="!isEditable"  v-on:click="addImage" circle size="small"></el-button>
           </el-row>
             <el-row>
               <el-col :span="4" class="col-label col-text-left">
-              Ajouter block texte :
+              Ajouter bloc texte :
               </el-col>
               <el-col :span="1">
                <el-button icon="el-icon-circle-plus" type="success" v-bind:disabled="!isEditable"  v-on:click="addTextBlock" circle size="small"></el-button>
               </el-col>
             </el-row>
           <el-row>
-            <el-col :span="8" class="col-label col-text-left"><label>L'égoût et les couleurs !</label></el-col>
+            <el-col :span="8" class="col-label col-text-left"><label>Couleur de fond</label></el-col>
              <el-col :span="16">          
-              <el-select v-model="mainColor" placeholder="L'égoût et les couleurs !" v-bind:disabled="!isEditable">
+              <el-select v-model="mainColor" placeholder="Couleur de fond" v-bind:disabled="!isEditable">
                 <el-option v-for="mainColor in mainColors" :key="mainColor" :label="mainColor" :value="mainColor">
                   <el-row>
                     <el-col :span="16"><span >{{ mainColor }}</span></el-col> <el-col :span="8"><div class="color-box" :style="'background:'+mainColor+';'"></div></el-col>
@@ -86,7 +86,7 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="8" class="col-label col-text-left"><label>La couleur de la plume est plus forte que le pêt.</label></el-col>
+            <el-col :span="8" class="col-label col-text-left"><label>Couleur texte</label></el-col>
              <el-col :span="16">          
               <el-select v-model="currentTextObjectConfig.fill" placeholder="La couleur du texte" v-bind:disabled="!isTextSelected  || !isEditable">
                 <el-option v-for="fillColor in mainColors" :key="fillColor" :label="fillColor" :value="fillColor">
@@ -124,11 +124,11 @@
 
           <el-row  type="flex" justify="center">
             <el-col :span="8">
-             <el-button type="primary"  v-bind:disabled="!isEditable" v-on:click="moveForward">Si tu avances</el-button>
+             <el-button type="primary"  v-bind:disabled="!isEditable" v-on:click="moveForward">avancer</el-button>
             </el-col>
             <el-col :span="4" class="col-label col-text-center" >et</el-col>
             <el-col :span="8">
-             <el-button type="primary" v-bind:disabled="!isEditable"  v-on:click="moveBackward">tu recules !</el-button>
+             <el-button type="primary" v-bind:disabled="!isEditable"  v-on:click="moveBackward">reculer</el-button>
             </el-col>
           </el-row>
           <el-row>
@@ -175,9 +175,9 @@ export default {
         strokeWidth: 1,
         stroke: "#ffffff"
       },
-      isTextSelected: true,
+      isTextSelected: false,
       topText: "Taupe texte izi year !",
-      newText: "New kid on the text !",
+      newText: "Tapes ton texte ici !",
       guideText: "Le guide expéditif.",
       guideTextBottom: "100 % pas remboursé !",
       titleText: "Le Ch'titre qui l'es bien là",
@@ -200,19 +200,18 @@ export default {
 
   mounted() {
     this.$canvas = new fabric.Canvas("background", {
-      width: 500,
-      height: 700,
+      width:  1200,
+      height: 800,
       backgroundColor: "white"
     });
 
     this.$canvas.upperCanvasEl.setAttribute("tabindex", "1");
     this.$canvas.upperCanvasEl.addEventListener('keydown',this.onKeyDown);
     //heading line
-    this.$headline = this.makeLine([5, 0, 495, 0], this.mainColor);
-    this.$canvas.add(this.$headline);
+   // this.$canvas.add(this.$headline);
 
     //top text
-    let topTextbox = new fabric.Textbox(this.topText, {
+ /*   let topTextbox = new fabric.Textbox(this.topText, {
       left: 50,
       top: 10,
       width: 400,
@@ -220,9 +219,9 @@ export default {
       fontStyle: "italic",
       borderColor: "green",
       textAlign: "center"
-    });
+    });*/
 
-    this.$canvas.add(topTextbox).setActiveObject(topTextbox);
+  /**   this.$canvas.add(topTextbox).setActiveObject(topTextbox);
     this.currentTextObjectConfig = topTextbox.toObject();
     let _self = this;
 
@@ -304,14 +303,14 @@ export default {
       fontWeight: "bold"
     });
     this.$canvas.add(cocoricoSymbol).add(cocoricoSymbol);
-
-    let cocoricopiright = new fabric.Text("CocoricoRLY", {
+*/
+    let cocoloricopyright = new fabric.Text("Cocoloricopyright 2019", {
       left: 10,
-      top: 680,
+      top: 780,
       fontSize: 10,
       fontWeight: "bold"
     });
-    this.$canvas.add(cocoricopiright).add(cocoricopiright);
+    this.$canvas.add(cocoloricopyright);
 
     this.registerTextWatcher();
 
@@ -320,6 +319,7 @@ export default {
     this.$canvas.on("selection:created", this.onObjectSelected);
 
     this.$canvas.on("selection:updated", this.onObjectSelected);
+    this.$canvas.renderAll();
 
     this.saveToPng();
   },
@@ -372,11 +372,15 @@ export default {
     },
 
     update() {
+      console.log('update',this.$canvas)
       if (!this.$canvas) {
         return;
       }
-      this.$canvas.fire("canvas:modified");
+      this.$canvas.fire("object:modified");
       this.$canvas.requestRenderAll();
+
+            console.log('canvas:modified')
+
     },
     loadAndUse(font) {
       let myfont = new FontFaceObserver(font);
@@ -447,7 +451,7 @@ export default {
         textAlign: "center"
       });
 
-      this.$canvas.add(newTextbox).setActiveObject(newText);
+      this.$canvas.add(newTextbox).setActiveObject(newTextbox);
     }
   },
   computed:{
@@ -471,7 +475,7 @@ export default {
       let _self = this;
       let baseUrl =
         process.env.NODE_ENV === "production"
-          ? "http://evifere.lescigales.org/cocoricover/animals/"
+          ? "http://evifere.lescigales.org/cocolorico/animals/"
           : "./animals/";
 
       this.$coverImg.setSrc(baseUrl + this.logo + ".png", function(oImg) {
@@ -496,15 +500,18 @@ export default {
     },
 
     mainColor: function() {
-      this.$headline.set({ fill: this.mainColor, stroke: this.mainColor });
+    //  this.$headline.set({ fill: this.mainColor, stroke: this.mainColor });
 
-      this.$titleTextbox.set({
-        textBackgroundColor: this.mainColor,
+    /*  this.$titleTextbox.set({
+        textBackgroundColor: this.mainColor,currentTextObjectConfig.textBackgroundColor
         backgroundColor: this.mainColor,
         stroke: this.mainColor
-      });
+      });*/
 
-      this.$canvas.requestRenderAll();
+      this.setActiveProp('textBackgroundColor',this.mainColor);
+      this.setActiveProp('backgroundColor',this.mainColor);
+      this.setActiveProp('stroke',this.mainColor);
+      
     }
   }
 };
