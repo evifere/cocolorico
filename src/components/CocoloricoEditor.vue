@@ -7,24 +7,24 @@
         <canvas  id='background' tabindex="0" ></canvas>
   </el-aside>
   <el-container>
-    <el-header>Cocoricorly générateur de couverture parodique !</el-header>
+    <el-header>Cocolorico !</el-header>
     <el-main>
         <hr/>
         <el-col class="params-panel">
           <el-row>
-            <el-col :span="4" class="col-label col-text-center"><label>Mais que fais la police !</label></el-col>
+            <el-col :span="4" class="col-label col-text-center"><label>Police </label></el-col>
             <el-col :span="4">
-              <el-select v-model="currentTextObjectConfig.fontFamily" placeholder="Mais que fais la police ?" v-bind:disabled="!isTextSelected || !isEditable">
+              <el-select v-model="currentTextObjectConfig.fontFamily" placeholder="Police" v-bind:disabled="!isTextSelected || !isEditable">
                 <el-option v-for="font in allFonts" :key="font" :label="font" :value="font"><span :style="'font-family:'+font">{{ font }}</span></el-option>
               </el-select>
             </el-col>        
-            <el-col :span="4" class="col-label col-text-center"><label>Gérer les kilos en trop</label></el-col>
+            <el-col :span="4" class="col-label col-text-center"><label>Graisse</label></el-col>
             <el-col :span="4">
               <el-select v-model="currentTextObjectConfig.fontWeight" placeholder="font weight" v-bind:disabled="!isTextSelected || !isEditable">
                 <el-option v-for="font in fontWeights" :key="font" :label="font" :value="font"></el-option>
               </el-select>
             </el-col>
-            <el-col :span="4" class="col-label col-text-center"><label>Avoir du style</label></el-col>
+            <el-col :span="4" class="col-label col-text-center"><label>Style</label></el-col>
             <el-col :span="4">
               <el-select v-model="currentTextObjectConfig.fontStyle" placeholder="font weight" v-bind:disabled="!isTextSelected || !isEditable">
                 <el-option v-for="font in fontStyles" :key="font" :label="font" :value="font"></el-option>
@@ -141,7 +141,7 @@
           </el-row>
       </el-col>
     </el-main>
-    <el-footer align="right">copyright 2018-2019 @cocoricorly v{{version}}</el-footer>
+    <el-footer align="right">copyright 2018-2019 @cocolorico v{{version}}</el-footer>
   </el-container>
 </el-container>
 
@@ -228,7 +228,7 @@ export default {
 
     let baseUrl =
       process.env.NODE_ENV === "production"
-        ? "http://evifere.lescigales.org/cocoricover/animals/"
+        ? "http://evifere.lescigales.org/cocolorico/animals/"
         : "./animals/";
 
     fabric.Image.fromURL(baseUrl + this.logo + ".png", function(oImg) {
