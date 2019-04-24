@@ -8,6 +8,17 @@
   </el-aside>
   <el-container>
     <el-header>Cocolorico !</el-header>
+    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="addImageFromMenu">
+        <el-submenu index="2">
+          <template slot="title">Animaux</template>
+            <el-menu-item v-for="logo in logos" :key="logo" :label="logo" :index="logo" >
+              <img :src="'animals/'+logo+'.png'" width="24" height="24"></img>
+            </el-menu-item>
+        </el-submenu>
+        <el-menu-item index="3" disabled>Infos</el-menu-item>
+        <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">Commandes</a></el-menu-item>
+      </el-menu>
+      <div class="line"></div>
     <el-main>
         <hr/>
         <el-col class="params-panel">
@@ -40,7 +51,7 @@
           </el-row>
           <el-row class="empty"></el-row>
           <!--el-row>
-            <el-col :span="6" class="col-label col-text-left"><label>Un logo logo dans la case avec ma frame !</label></el-col>
+            <el-col :span="6" class="col-label col-text-left"><label>image </label></el-col>
             <el-col :span="6">
               <el-select v-model="logo" placeholder="Ton logo c'est ici !" v-bind:disabled="!isEditable">
                 <el-option v-for="logo in logos" :key="logo" :label="logo" :value="logo">
@@ -176,12 +187,7 @@ export default {
         stroke: "#ffffff"
       },
       isTextSelected: false,
-      topText: "Taupe texte izi year !",
       newText: "Tapes ton texte ici !",
-      guideText: "Le guide expéditif.",
-      guideTextBottom: "100 % pas remboursé !",
-      titleText: "Le Ch'titre qui l'es bien là",
-      authorsText: "Danny Boom & @cocoricorly",
       logo: "logo",
       externalLogo: "",
       newImageUrl:"",
@@ -194,7 +200,8 @@ export default {
       isEditable: true,
       fontStyles: ["", "normal", "italic", "oblique"],
       fontWeights: ["bold", "normal", 400, 600, 800],
-      version:version
+      version:version,
+      activeIndex: '1',
     };
   },
 
@@ -207,103 +214,7 @@ export default {
 
     this.$canvas.upperCanvasEl.setAttribute("tabindex", "1");
     this.$canvas.upperCanvasEl.addEventListener('keydown',this.onKeyDown);
-    //heading line
-   // this.$canvas.add(this.$headline);
-
-    //top text
- /*   let topTextbox = new fabric.Textbox(this.topText, {
-      left: 50,
-      top: 10,
-      width: 400,
-      fontSize: 20,
-      fontStyle: "italic",
-      borderColor: "green",
-      textAlign: "center"
-    });*/
-
-  /**   this.$canvas.add(topTextbox).setActiveObject(topTextbox);
-    this.currentTextObjectConfig = topTextbox.toObject();
-    let _self = this;
-
-    let baseUrl =
-      process.env.NODE_ENV === "production"
-        ? "http://evifere.lescigales.org/cocolorico/animals/"
-        : "./animals/";
-
-    fabric.Image.fromURL(baseUrl + this.logo + ".png", function(oImg) {
-      oImg.set("left", 125).set("top", 100);
-      _self.$canvas.add(oImg);
-      _self.$coverImg = oImg;
-    });
-
-    //guide text
-    let guideTextbox = new fabric.Textbox(this.guideText, {
-      left: 10,
-      top: 385,
-      width: 490,
-      fontSize: 20,
-      fontStyle: "normal",
-      borderColor: "green",
-      textAlign: "left"
-    });
-
-    this.$canvas.add(guideTextbox);
-
-    //guide text
-    let guideTextboxBottom = new fabric.Textbox(this.guideTextBottom, {
-      left: 10,
-      top: 560,
-      width: 480,
-      fontSize: 20,
-      fontStyle: "bold",
-      borderColor: "green",
-      textAlign: "right",
-      linethrough: true
-    });
-
-    this.$canvas.add(guideTextboxBottom);
-
-    //title text
-    this.$titleTextbox = new fabric.Textbox(this.titleText, {
-      left: 10,
-      top: 410,
-      width: 480,
-      height: 2000,
-      textBackgroundColor: this.mainColor,
-      borderColor: "green",
-      selectionBackgroundColor: "yellow",
-      backgroundColor: this.mainColor,
-      stroke: this.mainColor,
-      fill: "white",
-      fontSize: 60,
-      fontStyle: "normal",
-      stroke: "#C96B1D"
-    });
-
-    this.$canvas.add(this.$titleTextbox);
-
-    //title text
-    let authorsTextbox = new fabric.Textbox(this.authorsText, {
-      left: 200,
-      top: 670,
-      width: 300,
-      borderColor: "green",
-      selectionBackgroundColor: "yellow",
-      fontSize: 20,
-      fontStyle: "italic"
-    });
-
-    this.$canvas.add(authorsTextbox);
-
-    //corocico copyright
-    let cocoricoSymbol = new fabric.Text("?", {
-      left: 70,
-      top: 670,
-      fontSize: 15,
-      fontWeight: "bold"
-    });
-    this.$canvas.add(cocoricoSymbol).add(cocoricoSymbol);
-*/
+  
     let cocoloricopyright = new fabric.Text("Cocoloricopyright 2019", {
       left: 10,
       top: 780,
@@ -378,9 +289,6 @@ export default {
       }
       this.$canvas.fire("object:modified");
       this.$canvas.requestRenderAll();
-
-            console.log('canvas:modified')
-
     },
     loadAndUse(font) {
       let myfont = new FontFaceObserver(font);
@@ -452,6 +360,21 @@ export default {
       });
 
       this.$canvas.add(newTextbox).setActiveObject(newTextbox);
+    },
+    addImageFromMenu(key, keyPath) {
+        console.log(key, keyPath);  
+      let _self = this;
+      let baseUrl =
+        process.env.NODE_ENV === "production"
+          ? "http://evifere.lescigales.org/cocolorico/animals/"
+          : "./animals/";
+
+      console.log(baseUrl + key + ".png")
+      fabric.Image.fromURL(baseUrl + key + ".png", function(oImg) {
+        oImg.set("left", 125).set("top", 100);
+        _self.$canvas.add(oImg);
+      },{ crossOrigin: "Anonymous" });
+        
     }
   },
   computed:{
@@ -500,18 +423,9 @@ export default {
     },
 
     mainColor: function() {
-    //  this.$headline.set({ fill: this.mainColor, stroke: this.mainColor });
-
-    /*  this.$titleTextbox.set({
-        textBackgroundColor: this.mainColor,currentTextObjectConfig.textBackgroundColor
-        backgroundColor: this.mainColor,
-        stroke: this.mainColor
-      });*/
-
       this.setActiveProp('textBackgroundColor',this.mainColor);
       this.setActiveProp('backgroundColor',this.mainColor);
       this.setActiveProp('stroke',this.mainColor);
-      
     }
   }
 };
