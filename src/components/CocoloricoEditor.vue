@@ -9,16 +9,13 @@
   <el-container>
     <el-header>Cocolorico !</el-header>
     <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="addImageFromMenu">
-        <el-submenu index="2">
+        <el-submenu index="animals">
           <template slot="title">Animaux</template>
             <el-menu-item v-for="logo in logos" :key="logo" :label="logo" :index="logo" >
               <img :src="'animals/'+logo+'.png'" width="24" height="24"></img>
             </el-menu-item>
         </el-submenu>
-        <el-menu-item index="3" disabled>Infos</el-menu-item>
-        <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">Commandes</a></el-menu-item>
-      </el-menu>
-      <div class="line"></div>
+    </el-menu>
     <el-main>
         <hr/>
         <el-col class="params-panel">
@@ -50,32 +47,6 @@
             </el-col>
           </el-row>
           <el-row class="empty"></el-row>
-          <!--el-row>
-            <el-col :span="6" class="col-label col-text-left"><label>image </label></el-col>
-            <el-col :span="6">
-              <el-select v-model="logo" placeholder="Ton logo c'est ici !" v-bind:disabled="!isEditable">
-                <el-option v-for="logo in logos" :key="logo" :label="logo" :value="logo">
-                  <el-row>
-                    <el-col :span="8"><img :src="'animals/'+logo+'.png'" width="24" height="24"></img></el-col>
-                    <el-col :span="8"><span>{{ logo }}</span></el-col>
-                  </el-row>
-                </el-option>
-              </el-select>
-            </el-col>
-            <el-col :span="12">
-              <el-input placeholder="https://openclipart.org/image/300px/svg_to_png/304284/1531920272.png" v-model="externalLogo">
-                <template slot="prepend">Logo perso</template>
-              </el-input>
-            </el-col>
-            </el-row-->
-            <el-row>
-              <el-col :span="18">
-              <el-input placeholder="https://openclipart.org/image/300px/svg_to_png/304284/1531920272.png" v-model="newImageUrl">
-                <template slot="prepend">Ajouter une image externe</template>
-              </el-input>
-              </el-col>
-              <el-button icon="el-icon-circle-plus" type="success" v-bind:disabled="!isEditable"  v-on:click="addImage" circle size="small"></el-button>
-          </el-row>
             <el-row>
               <el-col :span="4" class="col-label col-text-left">
               Ajouter bloc texte :
@@ -343,11 +314,7 @@ export default {
 
       this.$canvas.requestRenderAll();
     },
-    addImage(){
-      let _self = this;
-      fabric.Image.fromURL(this.newImageUrl, function(oImg) {
-        oImg.set("left", 125).set("top", 100);_self.$canvas.add(oImg);},{ crossOrigin: "Anonymous" });
-    },
+
     addTextBlock(){
       let newTextbox = new fabric.Textbox(this.newText, {
         left: 50,
@@ -362,15 +329,13 @@ export default {
       this.$canvas.add(newTextbox).setActiveObject(newTextbox);
     },
     addImageFromMenu(key, keyPath) {
-        console.log(key, keyPath);  
       let _self = this;
       let baseUrl =
-        process.env.NODE_ENV === "production"
+      process.env.NODE_ENV === "production"
           ? "http://evifere.lescigales.org/cocolorico/animals/"
-          : "./animals/";
+          : "./";
 
-      console.log(baseUrl + key + ".png")
-      fabric.Image.fromURL(baseUrl + key + ".png", function(oImg) {
+      fabric.Image.fromURL(baseUrl + keyPath.join('/') + ".png", function(oImg) {
         oImg.set("left", 125).set("top", 100);
         _self.$canvas.add(oImg);
       },{ crossOrigin: "Anonymous" });
@@ -392,34 +357,6 @@ export default {
           this.currentTextObjectConfig.fontFamily
         );
       }
-    },
-
-    logo() {
-      let _self = this;
-      let baseUrl =
-        process.env.NODE_ENV === "production"
-          ? "http://evifere.lescigales.org/cocolorico/animals/"
-          : "./animals/";
-
-      this.$coverImg.setSrc(baseUrl + this.logo + ".png", function(oImg) {
-        oImg.set("left", 125).set("top", 100);
-        _self.$canvas.add(oImg);
-        _self.$coverImg = oImg;
-      });
-    },
-
-    externalLogo() {
-      let _self = this;
-
-      this.$coverImg.setSrc(
-        this.externalLogo,
-        function(oImg) {
-          oImg.set("left", 125).set("top", 100);
-          _self.$canvas.add(oImg);
-          _self.$coverImg = oImg;
-        },
-        { crossOrigin: "Anonymous" }
-      );
     },
 
     mainColor: function() {
