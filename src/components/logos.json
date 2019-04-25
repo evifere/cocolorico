@@ -1,7 +1,9 @@
 {
   "animals": ["cougar", "lapin", "chien", "oies", "lion", "baleine", "chats", "canard", "pie", "paresseux", "cheval", "chameau", "escargot", "limace", "coffre-fort", "vache", "autruche","homard","saumon"],
   "sport":  ["football"],
-  "creatures":["monstre"],
+  "creatures":["monstre","unicorn","white-horse"],
   "transport":["airplane","car","oldcar"],
-  "furniture":["coffre-fort","lounge-chair"]  
+  "furniture":["coffre-fort","lounge-chair"], 
+  "tools":["shovel"]  
+ 
 }
