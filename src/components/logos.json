@@ -1,6 +1,6 @@
 {
   "animals": ["white-horse","cougar", "lapin", "chien", "oies", "lion", "baleine", "chats", "canard", "pie", "paresseux", "cheval", "chameau", "escargot", "limace", "vache", "autruche","homard","saumon"],
-  "sport":  ["football"],
+  "sport":  ["football","basket-player","basketball","basketball-rim","handball","tennis-raquet","tennis-raquet2","volleyball-net"],
   "creatures":["monstre","unicorn","monstre2","flying-dragon","oni","demon","elf","pegase","skull","witch","witch2"],
   "transport":["airplane","car","oldcar","oldcar2","bus","viking","corvette-ship","pirate-boat"],
   "furniture":["coffre-fort","lounge-chair"], 
@@ -8,5 +8,5 @@
   "landscape":["cloud-md","mountain-hi","volcano","capitol","turtle"],
   "food":["pizza","vegetable","carrot","eggplant","pea","broccoli","chou-fleur","sandwich","tomato","yam","roti"],
   "character":["pirate"],
-  "effects":["fire"]  
+  "effects":["fire","flaming-soccer"]  
 }
