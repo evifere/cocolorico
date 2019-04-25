@@ -1,1 +1,5 @@
-["cougar","lapin", "chien", "oies", "lion", "monstre","baleine","chats","canard","chasseur","beerbarrel","pie","paresseux","cheval","chameau","football","escargot","limace","airplane","coffre-fort","vache","autruche"]
+{
+  "animals": ["cougar", "lapin", "chien", "oies", "lion", "monstre", "baleine", "chats", "canard", "pie", "paresseux", "cheval", "chameau", "escargot", "limace", "airplane", "coffre-fort", "vache", "autruche"],
+  "sport":  ["football"]
+
+}
