@@ -7,6 +7,6 @@
   "tools":["shovel","magic-wand","screwdriver","electric_drill","ladder","fork","hammer","hammer2","cutter","rateau","pipe-wrench","double-open-end-wrench"],  
   "landscape":["cloud-md","mountain-hi","volcano","capitol","turtle","bedtime","eiffel","clock-tower"],
   "food":["pizza","vegetable","carrot","eggplant","pea","broccoli","chou-fleur","sandwich","tomato","yam","roti"],
-  "character":["pirate","armor","knight","magician","scarecrow","scarecrow2","gamorrean","doctor","superman-logo","batman-logo"],
+  "character":["pirate","armor","knight","magician","scarecrow","scarecrow2","gamorrean","doctor","superman-logo","batman-logo","cartoon-mummy"],
   "effects":["fire","flaming-soccer"]  
 }
