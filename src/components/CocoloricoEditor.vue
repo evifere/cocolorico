@@ -247,7 +247,7 @@
             </el-row>
             <hr>
             <el-row>
-              <a ref="downloadPng" href="#" download="cocoricover.png" v-show="false"></a>
+              <a ref="downloadPng" href="#" download="cocoloriage.png" v-show="false"></a>
               <el-button type="primary" v-on:click="downloadPng" icon="el-icon-download">Télécharger</el-button>
             </el-row>
           </el-col>
@@ -266,7 +266,7 @@ import { version } from "../../package.json";
 let FontFaceObserver = require("fontfaceobserver");
 
 export default {
-  name: "CocoricoEditor",
+  name: "CocoloricoEditor",
   props: {
     msg: String
   },
