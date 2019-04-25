@@ -6,6 +6,6 @@
   "furniture":["coffre-fort","lounge-chair"], 
   "tools":["shovel"],  
   "landscape":["cloud-md","mountain-hi","volcano","capitol"],
-  "food":["pizza"],
+  "food":["pizza","vegetable","carrot","eggplant","pea","broccoli","chou-fleur","sandwich","tomato","yam","roti"],
   "character":["pirate"]  
 }
