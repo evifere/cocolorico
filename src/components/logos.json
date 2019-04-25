@@ -5,8 +5,8 @@
   "transport":["airplane","car","oldcar","oldcar2","bus","viking","corvette-ship","pirate-boat","at-at-walker","truck","tractor"],
   "furniture":["coffre-fort","lounge-chair","globe","jicjac_couch","computer","post-bed","candelabra","table","table2","ceiling-fan","tabouret"], 
   "tools":["shovel","magic-wand","screwdriver","electric_drill","ladder","fork","hammer","hammer2","cutter","rateau","pipe-wrench","double-open-end-wrench"],  
-  "landscape":["cloud-md","mountain-hi","volcano","capitol","turtle","bedtime"],
+  "landscape":["cloud-md","mountain-hi","volcano","capitol","turtle","bedtime","eiffel","clock-tower"],
   "food":["pizza","vegetable","carrot","eggplant","pea","broccoli","chou-fleur","sandwich","tomato","yam","roti"],
-  "character":["pirate","armor","knight","magician","scarecrow","scarecrow2","gamorrean","doctor"],
+  "character":["pirate","armor","knight","magician","scarecrow","scarecrow2","gamorrean","doctor","superman-logo","batman-logo"],
   "effects":["fire","flaming-soccer"]  
 }

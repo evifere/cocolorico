@@ -46,7 +46,7 @@
                 </el-select>
               </el-col>
               <el-col :span="4" class="col-label col-text-center">
-                <label>Graisse</label>
+                <label>Epaisseur</label>
               </el-col>
               <el-col :span="4">
                 <el-select
@@ -72,9 +72,9 @@
             </el-row>
             <el-row type="flex" justify="center">
               <el-col :span="10">
-                <el-checkbox v-model="currentTextObjectConfig.underline">Underline</el-checkbox>
-                <el-checkbox v-model="currentTextObjectConfig.linethrough">Line through</el-checkbox>
-                <el-checkbox v-model="currentTextObjectConfig.overline">Overline</el-checkbox>
+                <el-checkbox v-model="currentTextObjectConfig.underline">Souligné</el-checkbox>
+                <el-checkbox v-model="currentTextObjectConfig.linethrough">Barré</el-checkbox>
+                <el-checkbox v-model="currentTextObjectConfig.overline">Surligné</el-checkbox>
               </el-col>
             </el-row>
             <el-row class="empty"></el-row>
@@ -191,7 +191,7 @@
             </el-row>
             <el-row>
               <el-col :span="8" class="col-label col-text-left">
-                <label>Font size</label>
+                <label>Taille de police</label>
               </el-col>
               <el-col :span="16">
                 <el-slider
@@ -206,7 +206,7 @@
             </el-row>
             <el-row>
               <el-col :span="8" class="col-label col-text-left">
-                <label>Line height</label>
+                <label>Hauteur de ligne</label>
               </el-col>
               <el-col :span="16">
                 <el-slider
