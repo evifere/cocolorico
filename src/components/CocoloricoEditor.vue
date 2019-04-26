@@ -19,10 +19,18 @@
     </el-header>
     <el-main>
       <el-container>
-      <el-aside width="1225px" v-show="!isEditable">
+      <el-aside width="72px">
+        <el-menu class="el-menu-vertical-demo" @select="handleVerticalMenu" :collapse="isCollapse">
+          <el-menu-item index="addTextBlock">
+            <img :src="'icons/add-text.png'" width="48" height="48">
+          </el-menu-item>
+        </el-menu>
+      </el-aside>
+      <el-aside class="img-preview" width="1225px" v-show="!isEditable">
         <img width="1200" height="800" ref="preview" src>
       </el-aside>
       <el-aside width="1225px" v-show="isEditable">
+        <el-col :span="1" class="col-label col-text-center">T</el-col>
         <canvas id="background" tabindex="0"></canvas>
       </el-aside>
       <el-main>
@@ -78,19 +86,6 @@
               </el-col>
             </el-row>
             <el-row class="empty"></el-row>
-            <el-row>
-              <el-col :span="4" class="col-label col-text-left">Ajouter bloc texte :</el-col>
-              <el-col :span="1">
-                <el-button
-                  icon="el-icon-circle-plus"
-                  type="success"
-                  v-bind:disabled="!isEditable"
-                  v-on:click="addTextBlock"
-                  circle
-                  size="small"
-                ></el-button>
-              </el-col>
-            </el-row>
             <el-row>
               <el-col :span="8" class="col-label col-text-left">
                 <label>Couleur de fond</label>
@@ -302,7 +297,8 @@ export default {
       fontStyles: ["", "normal", "italic", "oblique"],
       fontWeights: ["bold", "normal", 400, 600, 800],
       version: version,
-      activeIndex: "1"
+      activeIndex: "1",
+      isCollapse: true
     };
   },
 
@@ -471,7 +467,12 @@ export default {
         },
         { crossOrigin: "Anonymous" }
       );
-    }
+    },
+
+    handleVerticalMenu(key, keyPath) {
+        this[key]();
+    },
+
   },
   computed: {
     allFonts() {
@@ -509,7 +510,7 @@ div.page {
 }
 
 canvas,
-.el-aside img {
+.el-aside.img-preview img {
   border: 1px solid black;
 }
 
@@ -556,6 +557,10 @@ canvas,
   min-height: 48px;
    margin:0 0 3px 0;
 }
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
+  }
 </style>
 <style>
 .submenu-popup {
