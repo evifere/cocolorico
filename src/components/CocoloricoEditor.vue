@@ -7,12 +7,12 @@
         mode="horizontal"
         @select="addImageFromMenu"
       >
-        <el-submenu v-for="category in getCategories" :index="category">
+        <el-submenu v-for="category in getCategories" :index="category" popper-class="submenu-popup" :key="'menu_'+category">
           <template slot="title">
             <img :src="'categories/'+category+'.png'" width="64" height="64">
           </template>
           <el-menu-item v-for="logo in logos[category]" :key="logo" :label="logo" :index="logo">
-            <img :src="category + '/'+logo+'.png'" width="24" height="24">
+            <img :src="category + '/'+logo+'.png'" width="48" height="48">
           </el-menu-item>
         </el-submenu>
       </el-menu>
@@ -552,6 +552,24 @@ canvas,
   height: 2em;
 }
 .el-menu-item {
-  width: 64px;
+  width: 48px;
+  min-height: 48px;
 }
+</style>
+<style>
+.submenu-popup {
+  width:70px;
+  max-height:70px;
+  
+}
+.submenu-popup ul {
+  min-width: 70px;
+  margin-left: 16px;
+}
+
+.submenu-popup ul li{
+  padding:0;
+  margin:0;
+}
+
 </style>
