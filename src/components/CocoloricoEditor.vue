@@ -9,10 +9,10 @@
       >
         <el-submenu v-for="category in getCategories" :index="category" popper-class="submenu-popup" :key="'menu_'+category">
           <template slot="title">
-            <img :src="'categories/'+category+'.png'" width="64" height="64">
+            <img :src="'categories/'+category+'.png'" width="64" height="64" />
           </template>
           <el-menu-item v-for="logo in logos[category]" :key="logo" :label="logo" :index="logo">
-            <img :src="category + '/'+logo+'.png'" width="48" height="48">
+            <img :src="category + '/'+logo+'.png'" width="48" height="48" />
           </el-menu-item>
         </el-submenu>
       </el-menu>
@@ -22,8 +22,29 @@
       <el-aside width="72px">
         <el-menu class="el-menu-vertical-demo" @select="handleVerticalMenu" :collapse="isCollapse">
           <el-menu-item index="addTextBlock">
-            <img :src="'icons/add-text.png'" width="48" height="48">
+            <img :src="'icons/add-text.png'" width="48" height="48" />
           </el-menu-item>
+          <el-menu-item index="toggleBold">
+            <img :src="'icons/bold.png'" width="48" height="48" />
+          </el-menu-item>
+          <el-menu-item index="toggleItalic">
+            <img :src="'icons/italic.png'" width="48" height="48" />
+          </el-menu-item>
+          <el-menu-item index="toggleUnderline">
+            <img :src="'icons/underline.png'" width="48" height="48" />
+          </el-menu-item>
+           <el-menu-item index="toggleAlignLeft">
+            <img :src="'icons/align-left.png'" width="48" height="48" />
+          </el-menu-item>
+          <el-menu-item index="toggleAlignCenter">
+            <img :src="'icons/align-center.png'" width="48" height="48" />
+          </el-menu-item>
+          <el-menu-item index="toggleAlignJustify">
+            <img :src="'icons/align-justify.png'" width="48" height="48" />
+          </el-menu-item>
+          <el-menu-item index="toggleAlignRight">
+            <img :src="'icons/align-right.png'" width="48" height="48" />
+          </el-menu-item>         
         </el-menu>
       </el-aside>
       <el-aside class="img-preview" width="1225px" v-show="!isEditable">
@@ -53,34 +74,9 @@
                   </el-option>
                 </el-select>
               </el-col>
-              <el-col :span="4" class="col-label col-text-center">
-                <label>Epaisseur</label>
-              </el-col>
-              <el-col :span="4">
-                <el-select
-                  v-model="currentTextObjectConfig.fontWeight"
-                  placeholder="font weight"
-                  v-bind:disabled="!isTextSelected || !isEditable"
-                >
-                  <el-option v-for="font in fontWeights" :key="font" :label="font" :value="font"></el-option>
-                </el-select>
-              </el-col>
-              <el-col :span="4" class="col-label col-text-center">
-                <label>Style</label>
-              </el-col>
-              <el-col :span="4">
-                <el-select
-                  v-model="currentTextObjectConfig.fontStyle"
-                  placeholder="font weight"
-                  v-bind:disabled="!isTextSelected || !isEditable"
-                >
-                  <el-option v-for="font in fontStyles" :key="font" :label="font" :value="font"></el-option>
-                </el-select>
-              </el-col>
             </el-row>
             <el-row type="flex" justify="center">
               <el-col :span="10">
-                <el-checkbox v-model="currentTextObjectConfig.underline">Souligné</el-checkbox>
                 <el-checkbox v-model="currentTextObjectConfig.linethrough">Barré</el-checkbox>
                 <el-checkbox v-model="currentTextObjectConfig.overline">Surligné</el-checkbox>
               </el-col>
@@ -88,7 +84,7 @@
             <el-row class="empty"></el-row>
             <el-row>
               <el-col :span="8" class="col-label col-text-left">
-                <label>Couleur de fond</label>
+                  <img :src="'icons/fill-color.png'" width="48" height="48" />
               </el-col>
               <el-col :span="16">
                 <el-select
@@ -116,7 +112,7 @@
             </el-row>
             <el-row>
               <el-col :span="8" class="col-label col-text-left">
-                <label>Couleur texte</label>
+                  <img :src="'icons/text-color.png'" width="48" height="48" />
               </el-col>
               <el-col :span="16">
                 <el-select
@@ -139,25 +135,6 @@
                       </el-col>
                     </el-row>
                   </el-option>
-                </el-select>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="8" class="col-label col-text-left">
-                <label>Text align</label>
-              </el-col>
-              <el-col :span="16">
-                <el-select
-                  v-model="currentTextObjectConfig.textAlign"
-                  placeholder="Alignement"
-                  v-bind:disabled="!isTextSelected  || !isEditable"
-                >
-                  <el-option
-                    v-for="alignment in alignments"
-                    :key="alignment"
-                    :label="alignment"
-                    :value="alignment.toLowerCase()"
-                  ></el-option>
                 </el-select>
               </el-col>
             </el-row>
@@ -186,7 +163,7 @@
             </el-row>
             <el-row>
               <el-col :span="8" class="col-label col-text-left">
-                <label>Taille de police</label>
+                <img :src="'icons/text-height.png'" width="48" height="48" />
               </el-col>
               <el-col :span="16">
                 <el-slider
@@ -468,7 +445,35 @@ export default {
         { crossOrigin: "Anonymous" }
       );
     },
+//      alignments: ["Left", "Center", "Justify", "Right"],
 
+    toggleAlignLeft(){
+      this.currentTextObjectConfig.textAlign = "left";
+    },
+    toggleAlignCenter(){
+      this.currentTextObjectConfig.textAlign = "center";
+    },
+    toggleAlignJustify(){
+      this.currentTextObjectConfig.textAlign = "justify";
+    },
+    toggleAlignRight(){
+      this.currentTextObjectConfig.textAlign = "right";
+    },
+    toggleOverline(){
+      this.currentTextObjectConfig.overline = !this.currentTextObjectConfig.overline;
+    },
+    toggleLineThrough(){
+      this.currentTextObjectConfig.linethrough = !this.currentTextObjectConfig.linethrough;
+    },
+    toggleUnderline(){
+      this.currentTextObjectConfig.underline = !this.currentTextObjectConfig.underline;
+    },
+    toggleItalic(){
+      this.currentTextObjectConfig.fontStyle = (this.currentTextObjectConfig.fontStyle === "italic" ) ? "normal" : "italic";
+    },
+    toggleBold(){
+      this.currentTextObjectConfig.fontWeight = (this.currentTextObjectConfig.fontWeight === "bold" ) ? "normal" : "bold";
+    },
     handleVerticalMenu(key, keyPath) {
         this[key]();
     },
