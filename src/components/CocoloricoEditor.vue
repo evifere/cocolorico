@@ -554,6 +554,7 @@ canvas,
 .el-menu-item {
   width: 48px;
   min-height: 48px;
+   margin:0 0 3px 0;
 }
 </style>
 <style>
@@ -565,11 +566,6 @@ canvas,
 .submenu-popup ul {
   min-width: 70px;
   margin-left: 16px;
-}
-
-.submenu-popup ul li{
-  padding:0;
-  margin:0;
 }
 
 </style>
