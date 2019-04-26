@@ -33,6 +33,12 @@
           <el-menu-item index="toggleUnderline">
             <img :src="'icons/underline.png'" width="48" height="48" />
           </el-menu-item>
+          <el-menu-item index="toggleOverline">
+            <img :src="'icons/overline.png'" width="48" height="48" />
+          </el-menu-item>
+          <el-menu-item index="toggleLineThrough">
+             <img :src="'icons/line-through.png'" width="48" height="48" />
+          </el-menu-item>
            <el-menu-item index="toggleAlignLeft">
             <img :src="'icons/align-left.png'" width="48" height="48" />
           </el-menu-item>
@@ -61,7 +67,7 @@
           <el-col class="params-panel">
             <el-row>
               <el-col :span="4" class="col-label col-text-center">
-                <label>Police</label>
+                <img :src="'icons/police.png'" width="48" height="48" />
               </el-col>
               <el-col :span="4">
                 <el-select
@@ -73,12 +79,6 @@
                     <span :style="'font-family:'+font">{{ font }}</span>
                   </el-option>
                 </el-select>
-              </el-col>
-            </el-row>
-            <el-row type="flex" justify="center">
-              <el-col :span="10">
-                <el-checkbox v-model="currentTextObjectConfig.linethrough">Barré</el-checkbox>
-                <el-checkbox v-model="currentTextObjectConfig.overline">Surligné</el-checkbox>
               </el-col>
             </el-row>
             <el-row class="empty"></el-row>
@@ -141,7 +141,7 @@
             <el-row class="empty"></el-row>
             <el-row>
               <el-col :span="4" class="col-label col-text-left">
-                <label>Thunder Stroke</label>
+               <img :src="'icons/thicken-text.png'" width="48" height="48" />
               </el-col>
               <el-col :span="4">
                 <el-color-picker
@@ -178,7 +178,7 @@
             </el-row>
             <el-row>
               <el-col :span="8" class="col-label col-text-left">
-                <label>Hauteur de ligne</label>
+                <img :src="'icons/line-height.png'" width="48" height="48" />
               </el-col>
               <el-col :span="16">
                 <el-slider
@@ -194,19 +194,11 @@
 
             <el-row type="flex" justify="center">
               <el-col :span="8">
-                <el-button
-                  type="primary"
-                  v-bind:disabled="!isEditable"
-                  v-on:click="moveForward"
-                >avancer</el-button>
+                <img :src="'icons/bring-forward.png'" width="48" height="48" @click="moveForward"/>
               </el-col>
-              <el-col :span="4" class="col-label col-text-center">et</el-col>
+              <el-col :span="4" class="col-label col-text-center">&nbsp;</el-col>
               <el-col :span="8">
-                <el-button
-                  type="primary"
-                  v-bind:disabled="!isEditable"
-                  v-on:click="moveBackward"
-                >reculer</el-button>
+                <img :src="'icons/send-backward.png'" width="48" height="48" @click="moveBackward"/>
               </el-col>
             </el-row>
             <el-row>
@@ -402,18 +394,20 @@ export default {
       if (!object) {
         return;
       }
-      object.bringForward(true);
+      object.bringToFront();
 
-      this.$canvas.requestRenderAll();
+      this.update();
     },
     moveBackward() {
+
       let object = this.$canvas.getActiveObject();
+            console.log('moveBackward',object)
+
       if (!object) {
         return;
       }
-      object.sendBackwards(true);
-
-      this.$canvas.requestRenderAll();
+      object.sendToBack(true);
+      this.update();
     },
 
     addTextBlock() {
