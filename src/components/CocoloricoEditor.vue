@@ -647,7 +647,7 @@ canvas,
   margin-left: 2.2em;
 }
 
-.el-menu-vertical-demo .el-menu-item:hover {
+.el-menu-vertical-demo .el-menu-item:hover,.el-menu-vertical-demo .el-menu-item:focus  {
   outline: none;
   background-color: white;
 }
