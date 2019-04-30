@@ -61,7 +61,7 @@
         <canvas id="background" tabindex="0"></canvas>
       </el-aside>
       <el-main>
-        <el-header>Cocolorico !</el-header>
+        <el-header class="title"> <img :src="'icons/chicken.png'" width="72" height="72" /><span>Cocolorico !</span></el-header>
         <hr>
         <el-container>
           <el-col class="params-panel">
@@ -585,6 +585,10 @@ canvas,
     background-color: #ecf5ff;
 }
 
+.title img {
+  vertical-align: middle;
+  margin-right: 24px;
+}
 </style>
 <style>
 .submenu-popup {
