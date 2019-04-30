@@ -567,10 +567,24 @@ canvas,
       border-right: 0;
 }
 
+.el-menu-vertical-demo .el-menu-item {
+ width: 100%;
+}
 .el-menu-navbar{
   border-bottom: 0;
   margin-left:2.2em;
 }
+
+.el-menu-vertical-demo .el-menu-item:hover {
+    outline: none;
+    background-color: white;
+}
+
+.el-menu-vertical-demo .el-menu-item img:hover {
+    outline: none;
+    background-color: #ecf5ff;
+}
+
 </style>
 <style>
 .submenu-popup {
