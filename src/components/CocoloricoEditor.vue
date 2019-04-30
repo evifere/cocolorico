@@ -78,10 +78,10 @@
           <el-container>
             <el-col class="params-panel">
               <el-row>
-                <el-col :span="4" class="col-label col-text-center">
+                <el-col :span="2" class="col-label col-text-left label-icon" :class="{'text-cmd-disabled':!isTextSelected}">
                   <img :src="'icons/police.png'" width="48" height="48">
                 </el-col>
-                <el-col :span="4">
+                <el-col :span="20">
                   <el-select
                     v-model="currentTextObjectConfig.fontFamily"
                     placeholder="Police"
@@ -95,10 +95,10 @@
               </el-row>
               <el-row class="empty"></el-row>
               <el-row>
-                <el-col :span="8" class="col-label col-text-left">
+                <el-col :span="2" class="col-label col-text-left label-icon">
                   <img :src="'icons/fill-color.png'" width="48" height="48">
                 </el-col>
-                <el-col :span="16">
+                <el-col :span="20">
                   <el-select
                     v-model="mainColor"
                     placeholder="Couleur de fond"
@@ -123,10 +123,10 @@
                 </el-col>
               </el-row>
               <el-row>
-                <el-col :span="8" class="col-label col-text-left">
+                <el-col :span="2" class="col-label col-text-left label-icon" :class="{'text-cmd-disabled':!isTextSelected}">
                   <img :src="'icons/text-color.png'" width="48" height="48">
                 </el-col>
-                <el-col :span="16">
+                <el-col :span="20">
                   <el-select
                     v-model="currentTextObjectConfig.fill"
                     placeholder="La couleur du texte"
@@ -152,7 +152,7 @@
               </el-row>
               <el-row class="empty"></el-row>
               <el-row>
-                <el-col :span="4" class="col-label col-text-left">
+                <el-col :span="4" class="col-label col-text-left" :class="{'text-cmd-disabled':!isTextSelected}">
                   <img :src="'icons/thicken-text.png'" width="48" height="48">
                 </el-col>
                 <el-col :span="4">
@@ -174,7 +174,7 @@
                 </el-col>
               </el-row>
               <el-row>
-                <el-col :span="8" class="col-label col-text-left">
+                <el-col :span="8" class="col-label col-text-left" :class="{'text-cmd-disabled':!isTextSelected}">
                   <img :src="'icons/text-height.png'" width="48" height="48">
                 </el-col>
                 <el-col :span="16">
@@ -189,7 +189,7 @@
                 </el-col>
               </el-row>
               <el-row>
-                <el-col :span="8" class="col-label col-text-left">
+                <el-col :span="8" class="col-label col-text-left" :class="{'text-cmd-disabled':!isTextSelected}">
                   <img :src="'icons/line-height.png'" width="48" height="48">
                 </el-col>
                 <el-col :span="16">
@@ -605,11 +605,12 @@ canvas,
 .params-panel .el-row {
   padding-top: 0.6em;
 }
+/*
 .params-panel .el-row .el-col label,
 .params-panel .el-row .el-col.col-label {
   padding-top: 0.5em;
 }
-
+*/
 .col-text-left {
   text-align: left;
 }
@@ -666,7 +667,7 @@ canvas,
   border-radius: 25px;
 }
 
-.title img {
+.title img , img .label-icon{
   vertical-align: middle;
   margin-right: 24px;
 }
