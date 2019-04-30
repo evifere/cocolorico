@@ -56,7 +56,7 @@
       <el-aside class="img-preview" width="1225px" v-show="!isEditable">
         <img width="1200" height="800" ref="preview" src>
       </el-aside>
-      <el-aside width="1225px" v-show="isEditable">
+      <el-aside class="canvas-board" width="1225px" v-show="isEditable">
         <el-col :span="1" class="col-label col-text-center">T</el-col>
         <canvas id="background" tabindex="0"></canvas>
       </el-aside>
@@ -513,6 +513,9 @@ canvas,
   border: 1px solid black;
 }
 
+.el-aside.canvas-board{
+  min-height: 815px;
+}
 .el-aside {
   overflow: hidden;
   min-height: 706px;
