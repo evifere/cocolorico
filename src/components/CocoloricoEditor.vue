@@ -3,7 +3,7 @@
     <el-header>
       <el-menu
         :default-active="activeIndex"
-        class="el-menu-demo"
+        class="el-menu-navbar"
         mode="horizontal"
         @select="addImageFromMenu"
       >
@@ -19,7 +19,7 @@
     </el-header>
     <el-main>
       <el-container>
-      <el-aside width="72px">
+      <el-aside width="96px">
         <el-menu class="el-menu-vertical-demo" @select="handleVerticalMenu" :collapse="isCollapse">
           <el-menu-item index="addTextBlock">
             <img :src="'icons/add-text.png'" width="48" height="48" />
@@ -62,7 +62,7 @@
       </el-aside>
       <el-main>
         <el-header>Cocolorico !</el-header>
-
+        <hr>
         <el-container>
           <el-col class="params-panel">
             <el-row>
@@ -563,6 +563,14 @@ canvas,
     width: 200px;
     min-height: 400px;
   }
+.el-menu-vertical-demo{
+      border-right: 0;
+}
+
+.el-menu-navbar{
+  border-bottom: 0;
+  margin-left:2.2em;
+}
 </style>
 <style>
 .submenu-popup {
@@ -574,5 +582,4 @@ canvas,
   min-width: 70px;
   margin-left: 16px;
 }
-
 </style>
