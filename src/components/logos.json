@@ -1,12 +1,12 @@
 {
   "animals": ["white-horse","cougar", "lapin", "chien", "oies", "lion", "baleine", "chats", "canard", "pie", "paresseux", "cheval", "chameau", "escargot", "limace", "vache", "autruche","homard","saumon"],
-  "sport":  ["football","basket-player","basketball","basketball-rim","handball","tennis-raquet","tennis-raquet2","volleyball-net"],
+  "sport":  ["football","basket-player","basketball","basketball-rim","handball","tennis-raquet","tennis-raquet2","volleyball-net","kickboxer","boxing-gloves","boxing-bears","f1-flag","8_ball","snooker_player"],
   "creatures":["monstre","unicorn","monstre2","flying-dragon","oni","demon","elf","pegase","skull","witch","witch2","tauntaun"],
   "transport":["airplane","car","oldcar","oldcar2","bus","viking","corvette-ship","pirate-boat","at-at-walker","truck","tractor"],
-  "furniture":["coffre-fort","lounge-chair","globe","jicjac_couch","computer","post-bed","candelabra","table","table2","ceiling-fan","tabouret"], 
+  "furniture":["coffre-fort","lounge-chair","globe","jicjac_couch","computer","post-bed","candelabra","table","table2","ceiling-fan","tabouret","pool-chair"], 
   "tools":["shovel","magic-wand","screwdriver","electric_drill","ladder","fork","hammer","hammer2","cutter","rateau","pipe-wrench","double-open-end-wrench"],  
   "landscape":["cloud-md","mountain-hi","volcano","capitol","turtle","bedtime","eiffel","clock-tower"],
   "food":["pizza","vegetable","carrot","eggplant","pea","broccoli","chou-fleur","sandwich","tomato","yam","roti"],
-  "character":["pirate","armor","knight","magician","scarecrow","scarecrow2","gamorrean","doctor","superman-logo","batman-logo","cartoon-mummy"],
-  "effects":["fire","flaming-soccer"]  
+  "character":["pirate","armor","knight","magician","scarecrow","scarecrow2","gamorrean","doctor","superman-logo","batman-logo","cartoon-mummy","princess","princess2"],
+  "effects":["fire","flaming-soccer","8ball_flame","white-splash","white-splash2","wave-crashing","ocean-wave","storm","cloud","tornado","rain-drops","raining-cloud","protect-from-water"]  
 }
