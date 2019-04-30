@@ -95,7 +95,7 @@
               </el-row>
               <el-row class="empty"></el-row>
               <el-row>
-                <el-col :span="2" class="col-label col-text-left label-icon" :class="{'text-cmd-disabled':(!isTextSelected && !isImageSelected)}">
+                <el-col :span="2" class="col-label col-text-left label-icon" :class="{'text-cmd-disabled':((!isTextSelected && !isImageSelected) | !isEditable)}">
                   <img :src="'icons/fill-color.png'" width="48" height="48">
                 </el-col>
                 <el-col :span="20">
@@ -205,11 +205,11 @@
               </el-row>
 
               <el-row type="flex" justify="center">
-                <el-col :span="8">
+                <el-col :span="8" :class="{'text-cmd-disabled':((!isTextSelected && !isImageSelected) | !isEditable)}">
                   <img :src="'icons/bring-forward.png'" width="48" height="48" @click="moveForward">
                 </el-col>
                 <el-col :span="4" class="col-label col-text-center">&nbsp;</el-col>
-                <el-col :span="8">
+                <el-col :span="8" :class="{'text-cmd-disabled':((!isTextSelected && !isImageSelected) | !isEditable)}">
                   <img
                     :src="'icons/send-backward.png'"
                     width="48"
