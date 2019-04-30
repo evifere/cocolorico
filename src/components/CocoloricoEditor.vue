@@ -7,216 +7,237 @@
         mode="horizontal"
         @select="addImageFromMenu"
       >
-        <el-submenu v-for="category in getCategories" :index="category" popper-class="submenu-popup" :key="'menu_'+category">
+        <el-submenu
+          v-for="category in getCategories"
+          :index="category"
+          popper-class="submenu-popup"
+          :key="'menu_'+category"
+        >
           <template slot="title">
-            <img :src="'categories/'+category+'.png'" width="64" height="64" />
+            <img :src="'categories/'+category+'.png'" width="64" height="64">
           </template>
           <el-menu-item v-for="logo in logos[category]" :key="logo" :label="logo" :index="logo">
-            <img :src="category + '/'+logo+'.png'" width="48" height="48" />
+            <img :src="category + '/'+logo+'.png'" width="48" height="48">
           </el-menu-item>
         </el-submenu>
       </el-menu>
     </el-header>
     <el-main>
       <el-container>
-      <el-aside width="96px">
-        <el-menu class="el-menu-vertical-demo" @select="handleVerticalMenu" :collapse="isCollapse">
-          <el-menu-item index="addTextBlock">
-            <img :src="'icons/add-text.png'" width="48" height="48" />
-          </el-menu-item>
-          <el-menu-item index="toggleBold" :class="getTextCssClass('bold')">
-            <img :src="'icons/bold.png'" width="48" height="48" />
-          </el-menu-item>
-          <el-menu-item index="toggleItalic"  :class="getTextCssClass('italic')">
-            <img :src="'icons/italic.png'" width="48" height="48" />
-          </el-menu-item>
-          <el-menu-item index="toggleUnderline"  :class="getTextLineCssClass('underline')">
-            <img :src="'icons/underline.png'" width="48" height="48" />
-          </el-menu-item>
-          <el-menu-item index="toggleOverline"  :class="getTextLineCssClass('overline')">
-            <img :src="'icons/overline.png'" width="48" height="48" />
-          </el-menu-item>
-          <el-menu-item index="toggleLineThrough"  :class="getTextLineCssClass('linethrough')">
-             <img :src="'icons/line-through.png'" width="48" height="48" />
-          </el-menu-item>
-           <el-menu-item index="toggleAlignLeft" :class="getTextAlignCssClass('left')">
-            <img :src="'icons/align-left.png'" width="48" height="48" />
-          </el-menu-item>
-          <el-menu-item index="toggleAlignCenter" :class="getTextAlignCssClass('center')">
-            <img :src="'icons/align-center.png'" width="48" height="48" />
-          </el-menu-item>
-          <el-menu-item index="toggleAlignJustify" :class="getTextAlignCssClass('justify')">
-            <img :src="'icons/align-justify.png'" width="48" height="48" />
-          </el-menu-item>
-          <el-menu-item index="toggleAlignRight" :class="getTextAlignCssClass('right')">
-            <img :src="'icons/align-right.png'" width="48" height="48" />
-          </el-menu-item>         
-        </el-menu>
-      </el-aside>
-      <el-aside class="img-preview" width="1225px" v-show="!isEditable">
-        <img width="1200" height="800" ref="preview" src>
-      </el-aside>
-      <el-aside class="canvas-board" width="1225px" v-show="isEditable">
-        <el-col :span="1" class="col-label col-text-center">T</el-col>
-        <canvas id="background" tabindex="0"></canvas>
-      </el-aside>
-      <el-main>
-        <el-header class="title"> <img :src="'icons/chicken.png'" width="72" height="72" /><span>Cocolorico !</span></el-header>
-        <hr>
-        <el-container>
-          <el-col class="params-panel">
-            <el-row>
-              <el-col :span="4" class="col-label col-text-center">
-                <img :src="'icons/police.png'" width="48" height="48" />
-              </el-col>
-              <el-col :span="4">
-                <el-select
-                  v-model="currentTextObjectConfig.fontFamily"
-                  placeholder="Police"
-                  v-bind:disabled="!isTextSelected || !isEditable"
-                >
-                  <el-option v-for="font in allFonts" :key="font" :label="font" :value="font">
-                    <span :style="'font-family:'+font">{{ font }}</span>
-                  </el-option>
-                </el-select>
-              </el-col>
-            </el-row>
-            <el-row class="empty"></el-row>
-            <el-row>
-              <el-col :span="8" class="col-label col-text-left">
-                  <img :src="'icons/fill-color.png'" width="48" height="48" />
-              </el-col>
-              <el-col :span="16">
-                <el-select
-                  v-model="mainColor"
-                  placeholder="Couleur de fond"
-                  v-bind:disabled="!isEditable"
-                >
-                  <el-option
-                    v-for="mainColor in mainColors"
-                    :key="mainColor"
-                    :label="mainColor"
-                    :value="mainColor"
+        <el-aside width="96px">
+          <el-menu
+            class="el-menu-vertical-demo"
+            @select="handleVerticalMenu"
+            :collapse="isCollapse"
+          >
+            <el-menu-item index="addTextBlock">
+              <img :src="'icons/add-text.png'" width="48" height="48">
+            </el-menu-item>
+            <el-menu-item index="toggleBold" :class="getTextCssClass('bold')">
+              <img :src="'icons/bold.png'" width="48" height="48">
+            </el-menu-item>
+            <el-menu-item index="toggleItalic" :class="getTextCssClass('italic')">
+              <img :src="'icons/italic.png'" width="48" height="48">
+            </el-menu-item>
+            <el-menu-item index="toggleUnderline" :class="getTextLineCssClass('underline')">
+              <img :src="'icons/underline.png'" width="48" height="48">
+            </el-menu-item>
+            <el-menu-item index="toggleOverline" :class="getTextLineCssClass('overline')">
+              <img :src="'icons/overline.png'" width="48" height="48">
+            </el-menu-item>
+            <el-menu-item index="toggleLineThrough" :class="getTextLineCssClass('linethrough')">
+              <img :src="'icons/line-through.png'" width="48" height="48">
+            </el-menu-item>
+            <el-menu-item index="toggleAlignLeft" :class="getTextAlignCssClass('left')">
+              <img :src="'icons/align-left.png'" width="48" height="48">
+            </el-menu-item>
+            <el-menu-item index="toggleAlignCenter" :class="getTextAlignCssClass('center')">
+              <img :src="'icons/align-center.png'" width="48" height="48">
+            </el-menu-item>
+            <el-menu-item index="toggleAlignJustify" :class="getTextAlignCssClass('justify')">
+              <img :src="'icons/align-justify.png'" width="48" height="48">
+            </el-menu-item>
+            <el-menu-item index="toggleAlignRight" :class="getTextAlignCssClass('right')">
+              <img :src="'icons/align-right.png'" width="48" height="48">
+            </el-menu-item>
+          </el-menu>
+        </el-aside>
+        <el-aside class="img-preview" width="1225px" v-show="!isEditable">
+          <img width="1200" height="800" ref="preview" src>
+        </el-aside>
+        <el-aside class="canvas-board" width="1225px" v-show="isEditable">
+          <el-col :span="1" class="col-label col-text-center">T</el-col>
+          <canvas id="background" tabindex="0"></canvas>
+        </el-aside>
+        <el-main>
+          <el-header class="title">
+            <img :src="'icons/chicken.png'" width="72" height="72">
+            <span>Cocolorico !</span>
+          </el-header>
+          <hr>
+          <el-container>
+            <el-col class="params-panel">
+              <el-row>
+                <el-col :span="4" class="col-label col-text-center">
+                  <img :src="'icons/police.png'" width="48" height="48">
+                </el-col>
+                <el-col :span="4">
+                  <el-select
+                    v-model="currentTextObjectConfig.fontFamily"
+                    placeholder="Police"
+                    v-bind:disabled="!isTextSelected || !isEditable"
                   >
-                    <el-row>
-                      <el-col :span="16">
-                        <span>{{ mainColor }}</span>
-                      </el-col>
-                      <el-col :span="8">
-                        <div class="color-box" :style="'background:'+mainColor+';'"></div>
-                      </el-col>
-                    </el-row>
-                  </el-option>
-                </el-select>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="8" class="col-label col-text-left">
-                  <img :src="'icons/text-color.png'" width="48" height="48" />
-              </el-col>
-              <el-col :span="16">
-                <el-select
-                  v-model="currentTextObjectConfig.fill"
-                  placeholder="La couleur du texte"
-                  v-bind:disabled="!isTextSelected  || !isEditable"
-                >
-                  <el-option
-                    v-for="fillColor in mainColors"
-                    :key="fillColor"
-                    :label="fillColor"
-                    :value="fillColor"
+                    <el-option v-for="font in allFonts" :key="font" :label="font" :value="font">
+                      <span :style="'font-family:'+font">{{ font }}</span>
+                    </el-option>
+                  </el-select>
+                </el-col>
+              </el-row>
+              <el-row class="empty"></el-row>
+              <el-row>
+                <el-col :span="8" class="col-label col-text-left">
+                  <img :src="'icons/fill-color.png'" width="48" height="48">
+                </el-col>
+                <el-col :span="16">
+                  <el-select
+                    v-model="mainColor"
+                    placeholder="Couleur de fond"
+                    v-bind:disabled="!isEditable"
                   >
-                    <el-row>
-                      <el-col :span="16">
-                        <span>{{ fillColor }}</span>
-                      </el-col>
-                      <el-col :span="8">
-                        <div class="color-box" :style="'background:'+fillColor+';'"></div>
-                      </el-col>
-                    </el-row>
-                  </el-option>
-                </el-select>
-              </el-col>
-            </el-row>
-            <el-row class="empty"></el-row>
-            <el-row>
-              <el-col :span="4" class="col-label col-text-left">
-               <img :src="'icons/thicken-text.png'" width="48" height="48" />
-              </el-col>
-              <el-col :span="4">
-                <el-color-picker
-                  v-model="currentTextObjectConfig.stroke"
-                  size="mini"
-                  color-format="hex"
-                ></el-color-picker>
-              </el-col>
-              <el-col :span="16">
-                <el-slider
-                  v-model="currentTextObjectConfig.strokeWidth"
-                  :min="0"
-                  :max="10"
-                  :step="0.1"
-                  show-input
-                  v-bind:disabled="!isTextSelected || !isEditable"
-                ></el-slider>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="8" class="col-label col-text-left">
-                <img :src="'icons/text-height.png'" width="48" height="48" />
-              </el-col>
-              <el-col :span="16">
-                <el-slider
-                  v-model="currentTextObjectConfig.fontSize"
-                  :min="1"
-                  :max="120"
-                  :step="1"
-                  show-input
-                  v-bind:disabled="!isTextSelected  || !isEditable"
-                ></el-slider>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="8" class="col-label col-text-left">
-                <img :src="'icons/line-height.png'" width="48" height="48" />
-              </el-col>
-              <el-col :span="16">
-                <el-slider
-                  v-model="currentTextObjectConfig.lineHeight"
-                  :min="0"
-                  :max="10"
-                  :step="0.1"
-                  show-input
-                  v-bind:disabled="!isTextSelected  || !isEditable"
-                ></el-slider>
-              </el-col>
-            </el-row>
+                    <el-option
+                      v-for="mainColor in mainColors"
+                      :key="mainColor"
+                      :label="mainColor"
+                      :value="mainColor"
+                    >
+                      <el-row>
+                        <el-col :span="16">
+                          <span>{{ mainColor }}</span>
+                        </el-col>
+                        <el-col :span="8">
+                          <div class="color-box" :style="'background:'+mainColor+';'"></div>
+                        </el-col>
+                      </el-row>
+                    </el-option>
+                  </el-select>
+                </el-col>
+              </el-row>
+              <el-row>
+                <el-col :span="8" class="col-label col-text-left">
+                  <img :src="'icons/text-color.png'" width="48" height="48">
+                </el-col>
+                <el-col :span="16">
+                  <el-select
+                    v-model="currentTextObjectConfig.fill"
+                    placeholder="La couleur du texte"
+                    v-bind:disabled="!isTextSelected  || !isEditable"
+                  >
+                    <el-option
+                      v-for="fillColor in mainColors"
+                      :key="fillColor"
+                      :label="fillColor"
+                      :value="fillColor"
+                    >
+                      <el-row>
+                        <el-col :span="16">
+                          <span>{{ fillColor }}</span>
+                        </el-col>
+                        <el-col :span="8">
+                          <div class="color-box" :style="'background:'+fillColor+';'"></div>
+                        </el-col>
+                      </el-row>
+                    </el-option>
+                  </el-select>
+                </el-col>
+              </el-row>
+              <el-row class="empty"></el-row>
+              <el-row>
+                <el-col :span="4" class="col-label col-text-left">
+                  <img :src="'icons/thicken-text.png'" width="48" height="48">
+                </el-col>
+                <el-col :span="4">
+                  <el-color-picker
+                    v-model="currentTextObjectConfig.stroke"
+                    size="mini"
+                    color-format="hex"
+                  ></el-color-picker>
+                </el-col>
+                <el-col :span="16">
+                  <el-slider
+                    v-model="currentTextObjectConfig.strokeWidth"
+                    :min="0"
+                    :max="10"
+                    :step="0.1"
+                    show-input
+                    v-bind:disabled="!isTextSelected || !isEditable"
+                  ></el-slider>
+                </el-col>
+              </el-row>
+              <el-row>
+                <el-col :span="8" class="col-label col-text-left">
+                  <img :src="'icons/text-height.png'" width="48" height="48">
+                </el-col>
+                <el-col :span="16">
+                  <el-slider
+                    v-model="currentTextObjectConfig.fontSize"
+                    :min="1"
+                    :max="120"
+                    :step="1"
+                    show-input
+                    v-bind:disabled="!isTextSelected  || !isEditable"
+                  ></el-slider>
+                </el-col>
+              </el-row>
+              <el-row>
+                <el-col :span="8" class="col-label col-text-left">
+                  <img :src="'icons/line-height.png'" width="48" height="48">
+                </el-col>
+                <el-col :span="16">
+                  <el-slider
+                    v-model="currentTextObjectConfig.lineHeight"
+                    :min="0"
+                    :max="10"
+                    :step="0.1"
+                    show-input
+                    v-bind:disabled="!isTextSelected  || !isEditable"
+                  ></el-slider>
+                </el-col>
+              </el-row>
 
-            <el-row type="flex" justify="center">
-              <el-col :span="8">
-                <img :src="'icons/bring-forward.png'" width="48" height="48" @click="moveForward"/>
-              </el-col>
-              <el-col :span="4" class="col-label col-text-center">&nbsp;</el-col>
-              <el-col :span="8">
-                <img :src="'icons/send-backward.png'" width="48" height="48" @click="moveBackward"/>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-switch
-                v-model="isEditable"
-                active-text="Edition en cours"
-                inactive-text="Mode Preview"
-                v-on:change="saveToPng"
-              ></el-switch>
-            </el-row>
-            <hr>
-            <el-row>
-              <a ref="downloadPng" href="#" download="cocoloriage.png" v-show="false"></a>
-              <el-button type="primary" v-on:click="downloadPng" icon="el-icon-download">Télécharger</el-button>
-            </el-row>
-          </el-col>
-        </el-container>
-      </el-main>
+              <el-row type="flex" justify="center">
+                <el-col :span="8">
+                  <img :src="'icons/bring-forward.png'" width="48" height="48" @click="moveForward">
+                </el-col>
+                <el-col :span="4" class="col-label col-text-center">&nbsp;</el-col>
+                <el-col :span="8">
+                  <img
+                    :src="'icons/send-backward.png'"
+                    width="48"
+                    height="48"
+                    @click="moveBackward"
+                  >
+                </el-col>
+              </el-row>
+              <el-row>
+                <el-switch
+                  v-model="isEditable"
+                  active-text="Edition en cours"
+                  inactive-text="Mode Preview"
+                  v-on:change="saveToPng"
+                ></el-switch>
+              </el-row>
+              <hr>
+              <el-row>
+                <a ref="downloadPng" href="#" download="cocoloriage.png" v-show="false"></a>
+                <el-button
+                  type="primary"
+                  v-on:click="downloadPng"
+                  icon="el-icon-download"
+                >Télécharger</el-button>
+              </el-row>
+            </el-col>
+          </el-container>
+        </el-main>
       </el-container>
     </el-main>
     <el-footer align="right">copyright 2018-2019 @cocolorico v{{version}}</el-footer>
@@ -399,9 +420,8 @@ export default {
       this.update();
     },
     moveBackward() {
-
       let object = this.$canvas.getActiveObject();
-            console.log('moveBackward',object)
+      console.log("moveBackward", object);
 
       if (!object) {
         return;
@@ -422,6 +442,8 @@ export default {
       });
 
       this.$canvas.add(newTextbox).setActiveObject(newTextbox);
+      this.isTextSelected = true;
+      this.currentTextObjectConfig = newTextbox.toObject();
     },
     addImageFromMenu(key, keyPath) {
       let _self = this;
@@ -439,39 +461,45 @@ export default {
         { crossOrigin: "Anonymous" }
       );
     },
-//      alignments: ["Left", "Center", "Justify", "Right"],
+    //      alignments: ["Left", "Center", "Justify", "Right"],
 
-    toggleAlignLeft(){
+    toggleAlignLeft() {
       this.currentTextObjectConfig.textAlign = "left";
     },
-    toggleAlignCenter(){
+    toggleAlignCenter() {
       this.currentTextObjectConfig.textAlign = "center";
     },
-    toggleAlignJustify(){
+    toggleAlignJustify() {
       this.currentTextObjectConfig.textAlign = "justify";
     },
-    toggleAlignRight(){
+    toggleAlignRight() {
       this.currentTextObjectConfig.textAlign = "right";
     },
-    toggleOverline(){
-      this.currentTextObjectConfig.overline = !this.currentTextObjectConfig.overline;
+    toggleOverline() {
+      this.currentTextObjectConfig.overline = !this.currentTextObjectConfig
+        .overline;
     },
-    toggleLineThrough(){
-      this.currentTextObjectConfig.linethrough = !this.currentTextObjectConfig.linethrough;
+    toggleLineThrough() {
+      this.currentTextObjectConfig.linethrough = !this.currentTextObjectConfig
+        .linethrough;
     },
-    toggleUnderline(){
-      this.currentTextObjectConfig.underline = !this.currentTextObjectConfig.underline;
+    toggleUnderline() {
+      this.currentTextObjectConfig.underline = !this.currentTextObjectConfig
+        .underline;
     },
-    toggleItalic(){
-      this.currentTextObjectConfig.fontStyle = (this.currentTextObjectConfig.fontStyle === "italic" ) ? "normal" : "italic";
+    toggleItalic() {
+      this.currentTextObjectConfig.fontStyle =
+        this.currentTextObjectConfig.fontStyle === "italic"
+          ? "normal"
+          : "italic";
     },
-    toggleBold(){
-      this.currentTextObjectConfig.fontWeight = (this.currentTextObjectConfig.fontWeight === "bold" ) ? "normal" : "bold";
+    toggleBold() {
+      this.currentTextObjectConfig.fontWeight =
+        this.currentTextObjectConfig.fontWeight === "bold" ? "normal" : "bold";
     },
     handleVerticalMenu(key, keyPath) {
-        this[key]();
-    },
-
+      this[key]();
+    }
   },
   computed: {
     allFonts() {
@@ -480,45 +508,49 @@ export default {
     getCategories() {
       return Object.keys(this.logos);
     },
-    getTextCssClass(){
-      return (value) => {
-        let cssClass = 'text-cmd-enabled';
+    getTextCssClass() {
+      return value => {
+        let cssClass = "text-cmd-enabled";
 
-   console.log('getTextCssClass',value);
-        if(!this.isTextSelected){
-          return 'text-cmd-disabled'
+        if (!this.isTextSelected) {
+          return "text-cmd-disabled";
         }
-        switch(value){
-          case 'bold':
-            cssClass =(this.currentTextObjectConfig.fontWeight === "bold" ) ? "text-cmd-selected" : "text-cmd-enabled";
-          break;
-          case 'italic':
-           cssClass = (this.currentTextObjectConfig.fontStyle === "italic" ) ? "text-cmd-selected" : "text-cmd-enabled";
-           break;
+        switch (value) {
+          case "bold":
+            cssClass =
+              this.currentTextObjectConfig.fontWeight === "bold"
+                ? "text-cmd-selected"
+                : "text-cmd-enabled";
+            break;
+          case "italic":
+            cssClass =
+              this.currentTextObjectConfig.fontStyle === "italic"
+                ? "text-cmd-selected"
+                : "text-cmd-enabled";
+            break;
         }
 
         return cssClass;
-      }
+      };
     },
-    getTextLineCssClass(){
-      return (value) => {
-        if(!this.isTextSelected){
-          return 'text-cmd-disabled'
+    getTextLineCssClass() {
+      return value => {
+        if (!this.isTextSelected) {
+          return "text-cmd-disabled";
         }
         let test = this.currentTextObjectConfig[value];
-        console.log('test',test)
-        return {'text-cmd-selected':test,'text-cmd-enabled':!test};
-      }
-      },
-     getTextAlignCssClass(){
-      return (value) => {
-        if(!this.isTextSelected){
-          return 'text-cmd-disabled'
+        return { "text-cmd-selected": test, "text-cmd-enabled": !test };
+      };
+    },
+    getTextAlignCssClass() {
+      return value => {
+        if (!this.isTextSelected) {
+          return "text-cmd-disabled";
         }
-        let test = (this.currentTextObjectConfig.textAlign === value);
-        return {'text-cmd-selected':test,'text-cmd-enabled':!test};
-      }
-      }
+        let test = this.currentTextObjectConfig.textAlign === value;
+        return { "text-cmd-selected": test, "text-cmd-enabled": !test };
+      };
+    }
   },
   watch: {
     "currentTextObjectConfig.fontFamily"() {
@@ -552,7 +584,7 @@ canvas,
   border: 1px solid black;
 }
 
-.el-aside.canvas-board{
+.el-aside.canvas-board {
   min-height: 815px;
 }
 .el-aside {
@@ -596,36 +628,36 @@ canvas,
 .el-menu-item {
   width: 48px;
   min-height: 48px;
-   margin:0 0 3px 0;
+  margin: 0 0 3px 0;
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
-    min-height: 400px;
-  }
-.el-menu-vertical-demo{
-      border-right: 0;
+  width: 200px;
+  min-height: 400px;
+}
+.el-menu-vertical-demo {
+  border-right: 0;
 }
 
 .el-menu-vertical-demo .el-menu-item {
- width: 100%;
- margin-bottom:1.5em;
+  width: 100%;
+  margin-bottom: 1.5em;
 }
-.el-menu-navbar{
+.el-menu-navbar {
   border-bottom: 0;
-  margin-left:2.2em;
+  margin-left: 2.2em;
 }
 
 .el-menu-vertical-demo .el-menu-item:hover {
-    outline: none;
-    background-color: white;
+  outline: none;
+  background-color: white;
 }
 
-.el-menu-vertical-demo .el-menu-item.is-active{
-  color:white;
+.el-menu-vertical-demo .el-menu-item.is-active {
+  color: white;
 }
 .el-menu-vertical-demo .el-menu-item img:hover {
-    outline: none;
-    background-color: #ecf5ff;
+  outline: none;
+  background-color: #ecf5ff;
 }
 
 .el-menu-vertical-demo .el-menu-item img {
@@ -634,27 +666,25 @@ canvas,
   border-radius: 25px;
 }
 
-
 .title img {
   vertical-align: middle;
   margin-right: 24px;
 }
 
-.text-cmd-disabled img{
+.text-cmd-disabled img {
   opacity: 0.3;
 }
 .text-cmd-selected img {
-    background-color: #c5ddf3;
+  background-color: #c5ddf3;
 }
 .text-cmd-enabled img {
-    background-color:white;
+  background-color: white;
 }
 </style>
 <style>
 .submenu-popup {
-  width:70px;
-  max-height:70px;
-  
+  width: 70px;
+  max-height: 70px;
 }
 .submenu-popup ul {
   min-width: 70px;
