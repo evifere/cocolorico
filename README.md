@@ -1,7 +1,7 @@
 # cocolorico
 ![Project screenshot](https://github.com/evifere/cocolorico/blob/master/doc/img/screen.png)
 
-cocoricover is the generator used by [@cocoricorly](https://twitter.com/cocoricorly)
+cocolorico is the drawing generator for kids.
 
 it is based on [vue js](https://vuejs.org/) and [fabric js](http://fabricjs.com/)
 
