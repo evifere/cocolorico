@@ -24,31 +24,31 @@
           <el-menu-item index="addTextBlock">
             <img :src="'icons/add-text.png'" width="48" height="48" />
           </el-menu-item>
-          <el-menu-item index="toggleBold">
+          <el-menu-item index="toggleBold" :class="getTextCssClass('bold')">
             <img :src="'icons/bold.png'" width="48" height="48" />
           </el-menu-item>
-          <el-menu-item index="toggleItalic">
+          <el-menu-item index="toggleItalic"  :class="getTextCssClass('italic')">
             <img :src="'icons/italic.png'" width="48" height="48" />
           </el-menu-item>
-          <el-menu-item index="toggleUnderline">
+          <el-menu-item index="toggleUnderline"  :class="getTextLineCssClass('underline')">
             <img :src="'icons/underline.png'" width="48" height="48" />
           </el-menu-item>
-          <el-menu-item index="toggleOverline">
+          <el-menu-item index="toggleOverline"  :class="getTextLineCssClass('overline')">
             <img :src="'icons/overline.png'" width="48" height="48" />
           </el-menu-item>
-          <el-menu-item index="toggleLineThrough">
+          <el-menu-item index="toggleLineThrough"  :class="getTextLineCssClass('linethrough')">
              <img :src="'icons/line-through.png'" width="48" height="48" />
           </el-menu-item>
-           <el-menu-item index="toggleAlignLeft">
+           <el-menu-item index="toggleAlignLeft" :class="getTextAlignCssClass('left')">
             <img :src="'icons/align-left.png'" width="48" height="48" />
           </el-menu-item>
-          <el-menu-item index="toggleAlignCenter">
+          <el-menu-item index="toggleAlignCenter" :class="getTextAlignCssClass('center')">
             <img :src="'icons/align-center.png'" width="48" height="48" />
           </el-menu-item>
-          <el-menu-item index="toggleAlignJustify">
+          <el-menu-item index="toggleAlignJustify" :class="getTextAlignCssClass('justify')">
             <img :src="'icons/align-justify.png'" width="48" height="48" />
           </el-menu-item>
-          <el-menu-item index="toggleAlignRight">
+          <el-menu-item index="toggleAlignRight" :class="getTextAlignCssClass('right')">
             <img :src="'icons/align-right.png'" width="48" height="48" />
           </el-menu-item>         
         </el-menu>
@@ -479,7 +479,46 @@ export default {
     },
     getCategories() {
       return Object.keys(this.logos);
-    }
+    },
+    getTextCssClass(){
+      return (value) => {
+        let cssClass = 'text-cmd-enabled';
+
+   console.log('getTextCssClass',value);
+        if(!this.isTextSelected){
+          return 'text-cmd-disabled'
+        }
+        switch(value){
+          case 'bold':
+            cssClass =(this.currentTextObjectConfig.fontWeight === "bold" ) ? "text-cmd-selected" : "text-cmd-enabled";
+          break;
+          case 'italic':
+           cssClass = (this.currentTextObjectConfig.fontStyle === "italic" ) ? "text-cmd-selected" : "text-cmd-enabled";
+           break;
+        }
+
+        return cssClass;
+      }
+    },
+    getTextLineCssClass(){
+      return (value) => {
+        if(!this.isTextSelected){
+          return 'text-cmd-disabled'
+        }
+        let test = this.currentTextObjectConfig[value];
+        console.log('test',test)
+        return {'text-cmd-selected':test,'text-cmd-enabled':!test};
+      }
+      },
+     getTextAlignCssClass(){
+      return (value) => {
+        if(!this.isTextSelected){
+          return 'text-cmd-disabled'
+        }
+        let test = (this.currentTextObjectConfig.textAlign === value);
+        return {'text-cmd-selected':test,'text-cmd-enabled':!test};
+      }
+      }
   },
   watch: {
     "currentTextObjectConfig.fontFamily"() {
@@ -569,6 +608,7 @@ canvas,
 
 .el-menu-vertical-demo .el-menu-item {
  width: 100%;
+ margin-bottom:1.5em;
 }
 .el-menu-navbar{
   border-bottom: 0;
@@ -580,14 +620,34 @@ canvas,
     background-color: white;
 }
 
+.el-menu-vertical-demo .el-menu-item.is-active{
+  color:white;
+}
 .el-menu-vertical-demo .el-menu-item img:hover {
     outline: none;
     background-color: #ecf5ff;
 }
 
+.el-menu-vertical-demo .el-menu-item img {
+  border: 2px solid #89adce;
+  padding: 10px;
+  border-radius: 25px;
+}
+
+
 .title img {
   vertical-align: middle;
   margin-right: 24px;
+}
+
+.text-cmd-disabled img{
+  opacity: 0.3;
+}
+.text-cmd-selected img {
+    background-color: #c5ddf3;
+}
+.text-cmd-enabled img {
+    background-color:white;
 }
 </style>
 <style>
