@@ -95,14 +95,14 @@
               </el-row>
               <el-row class="empty"></el-row>
               <el-row>
-                <el-col :span="2" class="col-label col-text-left label-icon">
+                <el-col :span="2" class="col-label col-text-left label-icon" :class="{'text-cmd-disabled':(!isTextSelected && !isImageSelected)}">
                   <img :src="'icons/fill-color.png'" width="48" height="48">
                 </el-col>
                 <el-col :span="20">
                   <el-select
                     v-model="mainColor"
                     placeholder="Couleur de fond"
-                    v-bind:disabled="!isEditable"
+                    v-bind:disabled="((!isTextSelected && !isImageSelected) | !isEditable)"
                   >
                     <el-option
                       v-for="mainColor in mainColors"
@@ -273,11 +273,12 @@ export default {
         stroke: "#ffffff"
       },
       isTextSelected: false,
+      isImageSelected: false,
       newText: "Tapes ton texte ici !",
       logo: "logo",
       externalLogo: "",
       newImageUrl: "",
-      mainColor: "darkmagenta",
+      mainColor: "",
       logos: require("./logos.json"),
       mainColors: require("./cocoricolors.json"),
       fonts: require("./fonts.json"),
@@ -339,8 +340,10 @@ export default {
     onObjectSelected(evt) {
       let currentObject = this.$canvas.findTarget(evt);
       this.isTextSelected = false;
+      this.isImageSelected = false;
       if (!!currentObject) {
         this.isTextSelected = !(currentObject.type === "image");
+        this.isImageSelected = (currentObject.type === "image");
         this.currentTextObjectConfig = currentObject.toObject();
       }
     },
@@ -456,7 +459,9 @@ export default {
         baseUrl + keyPath.join("/") + ".png",
         function(oImg) {
           oImg.set("left", 125).set("top", 100);
-          _self.$canvas.add(oImg);
+          _self.$canvas.add(oImg).setActiveObject(oImg);
+          _self.isImageSelected = true;
+          _self.isTextSelected = false;
         },
         { crossOrigin: "Anonymous" }
       );
