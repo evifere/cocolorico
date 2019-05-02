@@ -14,10 +14,10 @@
           :key="'menu_'+category"
         >
           <template slot="title">
-            <img :src="'categories/'+category+'.png'" width="64" height="64">
+            <img :src="'categories/'+category+'.png'" width="48" height="48">
           </template>
           <el-menu-item v-for="logo in logos[category]" :key="logo" :label="logo" :index="logo">
-            <img :src="category + '/'+logo+'.png'" width="48" height="48">
+            <img :src="category + '/'+logo+'.png'" width="36" height="36">
           </el-menu-item>
         </el-submenu>
       </el-menu>
@@ -610,12 +610,7 @@ canvas,
 .params-panel .el-row {
   padding-top: 0.6em;
 }
-/*
-.params-panel .el-row .el-col label,
-.params-panel .el-row .el-col.col-label {
-  padding-top: 0.5em;
-}
-*/
+
 .col-text-left {
   text-align: left;
 }
@@ -632,8 +627,8 @@ canvas,
   height: 2em;
 }
 .el-menu-item {
-  width: 48px;
-  min-height: 48px;
+  width: 36px;
+  min-height: 36px;
   margin: 0 0 3px 0;
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
@@ -650,7 +645,7 @@ canvas,
 }
 .el-menu-navbar {
   border-bottom: 0;
-  margin-left: 2.2em;
+  margin-left: 3.2em;
 }
 
 .el-menu-vertical-demo .el-menu-item:hover,.el-menu-vertical-demo .el-menu-item:focus  {
@@ -693,7 +688,7 @@ canvas,
   max-height: 70px;
 }
 .submenu-popup ul {
-  min-width: 70px;
+  min-width: 48px;
   margin-left: 16px;
 }
 </style>

@@ -8,5 +8,6 @@
   "landscape":["cloud-md","mountain-hi","volcano","capitol","turtle","bedtime","eiffel","clock-tower","taj-mahal","statue-of-liberty","nature-trail","tree","sapin","cabin","neighborhood"],
   "food":["pizza","vegetable","carrot","eggplant","pea","broccoli","chou-fleur","sandwich","tomato","yam","roti","fries","muffin","burger","grapes","orange","pear"],
   "character":["pirate","armor","knight","magician","scarecrow","scarecrow2","gamorrean","doctor","superman-logo","batman-logo","cartoon-mummy","princess","princess2"],
-  "effects":["fire","flaming-soccer","8ball_flame","white-splash","white-splash2","wave-crashing","ocean-wave","storm","cloud","tornado","rain-drops","raining-cloud","protect-from-water","rainbow","sun","sun2"]  
+  "effects":["fire","flaming-soccer","8ball_flame","white-splash","white-splash2","wave-crashing","ocean-wave","storm","cloud","tornado","rain-drops","raining-cloud","protect-from-water","rainbow","sun","sun2"],
+  "mandalas" :["rosette","flower","abstract-relic"] 
 }
