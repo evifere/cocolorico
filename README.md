@@ -3,6 +3,7 @@
 
 cocolorico is the drawing generator for kids.
 
+
 it is based on [vue js](https://vuejs.org/) and [fabric js](http://fabricjs.com/)
 
 # first install
