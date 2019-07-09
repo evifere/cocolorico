@@ -20,6 +20,15 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css?family=Pacifico|VT323|Quicksand|Inconsolata|Ubuntu|Lobster|Anton|Karla|Righteous|Permanent+Marker|Satisfy|Kaushan+Script|Luckiest+Guy|Alfa+Slab+One|Bungee+Shade|Kumar+One|Galada|Monoton|Rye|Spicy+Rice');
 
+@font-face {
+  font-family: "Star Wars";
+  src: url("assets/fonts/starwars/STARWARS.eot?") format("eot"), url("assets/fonts/starwars/STARWARS.woff") format("woff"),
+    url("assets/fonts/starwars/STARWARS.ttf") format("truetype"),
+    url("assets/fonts/starwars/STARWARS.svg#STARWARS") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
