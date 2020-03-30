@@ -455,6 +455,10 @@ export default {
           ? "http://evifere.lescigales.org/cocolorico/"
           : "./";
 
+      if( window.location.hostname === "evifere.github.io"){
+        baseUrl = 'https://evifere.github.io/cocolorico/';
+      }
+
       fabric.Image.fromURL(
         baseUrl + keyPath.join("/") + ".png",
         function(oImg) {
