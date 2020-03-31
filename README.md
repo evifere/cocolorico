@@ -29,5 +29,6 @@ the build will be generated in dist folder
 
 | Version | Description |
 | ------------- |:-------------:|
+| 1.0.2      | support low resolution |
 | 1.0.1      | add star wars front from https://fr.fonts2u.com/starwars.police?charmap=2 |
 | 1.0.0      | initial version |
