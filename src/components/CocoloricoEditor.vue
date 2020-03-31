@@ -14,10 +14,10 @@
           :key="'menu_'+category"
         >
           <template slot="title">
-            <img :src="'categories/'+category+'.png'" width="48" height="48">
+            <img :src="'categories/'+category+'.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
           </template>
           <el-menu-item v-for="logo in logos[category]" :key="logo" :label="logo" :index="logo">
-            <img :src="category + '/'+logo+'.png'" width="36" height="36">
+            <img :src="category + '/'+logo+'.png'" width="36" height="36" />
           </el-menu-item>
         </el-submenu>
       </el-menu>
@@ -31,55 +31,59 @@
             :collapse="isCollapse"
           >
             <el-menu-item index="addTextBlock">
-              <img :src="'icons/add-text.png'" width="48" height="48">
+              <img :src="'icons/add-text.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleBold" :class="getTextCssClass('bold')">
-              <img :src="'icons/bold.png'" width="48" height="48">
+              <img :src="'icons/bold.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleItalic" :class="getTextCssClass('italic')">
-              <img :src="'icons/italic.png'" width="48" height="48">
+              <img :src="'icons/italic.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleUnderline" :class="getTextLineCssClass('underline')">
-              <img :src="'icons/underline.png'" width="48" height="48">
+              <img :src="'icons/underline.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleOverline" :class="getTextLineCssClass('overline')">
-              <img :src="'icons/overline.png'" width="48" height="48">
+              <img :src="'icons/overline.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleLineThrough" :class="getTextLineCssClass('linethrough')">
-              <img :src="'icons/line-through.png'" width="48" height="48">
+              <img :src="'icons/line-through.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleAlignLeft" :class="getTextAlignCssClass('left')">
-              <img :src="'icons/align-left.png'" width="48" height="48">
+              <img :src="'icons/align-left.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleAlignCenter" :class="getTextAlignCssClass('center')">
-              <img :src="'icons/align-center.png'" width="48" height="48">
+              <img :src="'icons/align-center.png'":width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleAlignJustify" :class="getTextAlignCssClass('justify')">
-              <img :src="'icons/align-justify.png'" width="48" height="48">
+              <img :src="'icons/align-justify.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleAlignRight" :class="getTextAlignCssClass('right')">
-              <img :src="'icons/align-right.png'" width="48" height="48">
+              <img :src="'icons/align-right.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
           </el-menu>
         </el-aside>
-        <el-aside class="img-preview" width="1225px" v-show="!isEditable">
-          <img width="1200" height="800" ref="preview" src>
+        <el-aside class="img-preview" :width="$mq | mq({ sm: '625px', md: '625px', lg: '1225px' })" v-show="!isEditable">
+          <img width="1200" height="800" ref="preview" src />
         </el-aside>
-        <el-aside class="canvas-board" width="1225px" v-show="isEditable">
+        <el-aside class="canvas-board" :width="$mq | mq({ sm: '625px', md: '625px', lg: '1225px' })" v-show="isEditable">
           <el-col :span="1" class="col-label col-text-center">T</el-col>
           <canvas id="background" tabindex="0"></canvas>
         </el-aside>
-        <el-main>
+        <el-main class="main-params">
           <el-header class="title">
-            <img :src="'icons/chicken.png'" width="72" height="72">
+            <img :src="'icons/chicken.png'" width="72" height="72" />
             <span>Cocolorico !</span>
           </el-header>
-          <hr>
+          <hr />
           <el-container>
             <el-col class="params-panel">
               <el-row>
-                <el-col :span="2" class="col-label col-text-left label-icon" :class="{'text-cmd-disabled':!isTextSelected}">
-                  <img :src="'icons/police.png'" width="48" height="48">
+                <el-col
+                  :span="2"
+                  class="col-label col-text-left label-icon"
+                  :class="{'text-cmd-disabled':!isTextSelected}"
+                >
+                  <img :src="'icons/police.png'" width="48" height="48" />
                 </el-col>
                 <el-col :span="20">
                   <el-select
@@ -95,8 +99,12 @@
               </el-row>
               <el-row class="empty"></el-row>
               <el-row>
-                <el-col :span="2" class="col-label col-text-left label-icon" :class="{'text-cmd-disabled':((!isTextSelected && !isImageSelected) | !isEditable)}">
-                  <img :src="'icons/fill-color.png'" width="48" height="48">
+                <el-col
+                  :span="2"
+                  class="col-label col-text-left label-icon"
+                  :class="{'text-cmd-disabled':((!isTextSelected && !isImageSelected) | !isEditable)}"
+                >
+                  <img :src="'icons/fill-color.png'" width="48" height="48" />
                 </el-col>
                 <el-col :span="20">
                   <el-select
@@ -123,8 +131,12 @@
                 </el-col>
               </el-row>
               <el-row>
-                <el-col :span="2" class="col-label col-text-left label-icon" :class="{'text-cmd-disabled':!isTextSelected}">
-                  <img :src="'icons/text-color.png'" width="48" height="48">
+                <el-col
+                  :span="2"
+                  class="col-label col-text-left label-icon"
+                  :class="{'text-cmd-disabled':!isTextSelected}"
+                >
+                  <img :src="'icons/text-color.png'" width="48" height="48" />
                 </el-col>
                 <el-col :span="20">
                   <el-select
@@ -147,13 +159,17 @@
                         </el-col>
                       </el-row>
                     </el-option>
-                  </el-select>
+                  </el-select>9
                 </el-col>
               </el-row>
               <el-row class="empty"></el-row>
               <el-row>
-                <el-col :span="4" class="col-label col-text-left" :class="{'text-cmd-disabled':!isTextSelected}">
-                  <img :src="'icons/thicken-text.png'" width="48" height="48">
+                <el-col
+                  :span="4"
+                  class="col-label col-text-left"
+                  :class="{'text-cmd-disabled':!isTextSelected}"
+                >
+                  <img :src="'icons/thicken-text.png'" width="48" height="48" />
                 </el-col>
                 <el-col :span="4">
                   <el-color-picker
@@ -174,8 +190,12 @@
                 </el-col>
               </el-row>
               <el-row>
-                <el-col :span="8" class="col-label col-text-left" :class="{'text-cmd-disabled':!isTextSelected}">
-                  <img :src="'icons/text-height.png'" width="48" height="48">
+                <el-col
+                  :span="8"
+                  class="col-label col-text-left"
+                  :class="{'text-cmd-disabled':!isTextSelected}"
+                >
+                  <img :src="'icons/text-height.png'" width="48" height="48" />
                 </el-col>
                 <el-col :span="16">
                   <el-slider
@@ -189,8 +209,12 @@
                 </el-col>
               </el-row>
               <el-row>
-                <el-col :span="8" class="col-label col-text-left" :class="{'text-cmd-disabled':!isTextSelected}">
-                  <img :src="'icons/line-height.png'" width="48" height="48">
+                <el-col
+                  :span="8"
+                  class="col-label col-text-left"
+                  :class="{'text-cmd-disabled':!isTextSelected}"
+                >
+                  <img :src="'icons/line-height.png'" width="48" height="48" />
                 </el-col>
                 <el-col :span="16">
                   <el-slider
@@ -205,17 +229,23 @@
               </el-row>
 
               <el-row type="flex" justify="center">
-                <el-col :span="8" :class="{'text-cmd-disabled':((!isTextSelected && !isImageSelected) | !isEditable)}">
-                  <img :src="'icons/bring-forward.png'" width="48" height="48" @click="moveForward">
+                <el-col
+                  :span="8"
+                  :class="{'text-cmd-disabled':((!isTextSelected && !isImageSelected) | !isEditable)}"
+                >
+                  <img :src="'icons/bring-forward.png'" width="48" height="48" @click="moveForward" />
                 </el-col>
                 <el-col :span="4" class="col-label col-text-center">&nbsp;</el-col>
-                <el-col :span="8" :class="{'text-cmd-disabled':((!isTextSelected && !isImageSelected) | !isEditable)}">
+                <el-col
+                  :span="8"
+                  :class="{'text-cmd-disabled':((!isTextSelected && !isImageSelected) | !isEditable)}"
+                >
                   <img
                     :src="'icons/send-backward.png'"
                     width="48"
                     height="48"
                     @click="moveBackward"
-                  >
+                  />
                 </el-col>
               </el-row>
               <el-row>
@@ -226,7 +256,7 @@
                   v-on:change="saveToPng"
                 ></el-switch>
               </el-row>
-              <hr>
+              <hr />
               <el-row>
                 <a ref="downloadPng" href="#" download="cocoloriage.png" v-show="false"></a>
                 <el-button
@@ -294,11 +324,22 @@ export default {
   },
 
   mounted() {
-    this.$canvas = new fabric.Canvas("background", {
-      width: 1200,
-      height: 800,
-      backgroundColor: "white"
-    });
+    console.log("this.$mq = ", this.$mq);
+
+    this.$canvas = new fabric.Canvas(
+      "background",
+      this.$mq === "lg"
+        ? {
+            width: 1200,
+            height: 800,
+            backgroundColor: "white"
+          }
+        : {
+            width: 600,
+            height: 800,
+            backgroundColor: "white"
+          }
+    );
 
     this.$canvas.upperCanvasEl.setAttribute("tabindex", "1");
     this.$canvas.upperCanvasEl.addEventListener("keydown", this.onKeyDown);
@@ -343,7 +384,7 @@ export default {
       this.isImageSelected = false;
       if (!!currentObject) {
         this.isTextSelected = !(currentObject.type === "image");
-        this.isImageSelected = (currentObject.type === "image");
+        this.isImageSelected = currentObject.type === "image";
         this.currentTextObjectConfig = currentObject.toObject();
       }
     },
@@ -455,8 +496,8 @@ export default {
           ? "http://evifere.lescigales.org/cocolorico/"
           : "./";
 
-      if( window.location.hostname === "evifere.github.io"){
-        baseUrl = 'https://evifere.github.io/cocolorico/';
+      if (window.location.hostname === "evifere.github.io") {
+        baseUrl = "https://evifere.github.io/cocolorico/";
       }
 
       fabric.Image.fromURL(
@@ -611,6 +652,7 @@ canvas,
   font-weight: italic;
 }
 
+
 .params-panel .el-row {
   padding-top: 0.6em;
 }
@@ -652,7 +694,8 @@ canvas,
   margin-left: 3.2em;
 }
 
-.el-menu-vertical-demo .el-menu-item:hover,.el-menu-vertical-demo .el-menu-item:focus  {
+.el-menu-vertical-demo .el-menu-item:hover,
+.el-menu-vertical-demo .el-menu-item:focus {
   outline: none;
   background-color: white;
 }
@@ -671,7 +714,8 @@ canvas,
   border-radius: 25px;
 }
 
-.title img , img .label-icon{
+.title img,
+img .label-icon {
   vertical-align: middle;
   margin-right: 24px;
 }
@@ -685,6 +729,11 @@ canvas,
 .text-cmd-enabled img {
   background-color: white;
 }
+
+.main-params {
+  min-width:24em;
+}
+
 </style>
 <style>
 .submenu-popup {
