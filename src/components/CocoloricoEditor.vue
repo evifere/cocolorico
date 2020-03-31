@@ -31,34 +31,34 @@
             :collapse="isCollapse"
           >
             <el-menu-item index="addTextBlock">
-              <img :src="'icons/add-text.png'" width="48" height="48" />
+              <img :src="'icons/add-text.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleBold" :class="getTextCssClass('bold')">
-              <img :src="'icons/bold.png'" width="48" height="48" />
+              <img :src="'icons/bold.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleItalic" :class="getTextCssClass('italic')">
-              <img :src="'icons/italic.png'" width="48" height="48" />
+              <img :src="'icons/italic.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleUnderline" :class="getTextLineCssClass('underline')">
-              <img :src="'icons/underline.png'" width="48" height="48" />
+              <img :src="'icons/underline.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleOverline" :class="getTextLineCssClass('overline')">
-              <img :src="'icons/overline.png'" width="48" height="48" />
+              <img :src="'icons/overline.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleLineThrough" :class="getTextLineCssClass('linethrough')">
-              <img :src="'icons/line-through.png'" width="48" height="48" />
+              <img :src="'icons/line-through.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleAlignLeft" :class="getTextAlignCssClass('left')">
-              <img :src="'icons/align-left.png'" width="48" height="48" />
+              <img :src="'icons/align-left.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleAlignCenter" :class="getTextAlignCssClass('center')">
-              <img :src="'icons/align-center.png'" width="48" height="48" />
+              <img :src="'icons/align-center.png'":width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleAlignJustify" :class="getTextAlignCssClass('justify')">
-              <img :src="'icons/align-justify.png'" width="48" height="48" />
+              <img :src="'icons/align-justify.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
             <el-menu-item index="toggleAlignRight" :class="getTextAlignCssClass('right')">
-              <img :src="'icons/align-right.png'" width="48" height="48" />
+              <img :src="'icons/align-right.png'" :width="$mq | mq({ sm: '24', md: '24', lg: '48' })" :height="$mq | mq({ sm: '24', md: '24', lg: '48' })" />
             </el-menu-item>
           </el-menu>
         </el-aside>
@@ -69,7 +69,7 @@
           <el-col :span="1" class="col-label col-text-center">T</el-col>
           <canvas id="background" tabindex="0"></canvas>
         </el-aside>
-        <el-main>
+        <el-main class="main-params">
           <el-header class="title">
             <img :src="'icons/chicken.png'" width="72" height="72" />
             <span>Cocolorico !</span>
@@ -652,6 +652,7 @@ canvas,
   font-weight: italic;
 }
 
+
 .params-panel .el-row {
   padding-top: 0.6em;
 }
@@ -728,6 +729,11 @@ img .label-icon {
 .text-cmd-enabled img {
   background-color: white;
 }
+
+.main-params {
+  min-width:24em;
+}
+
 </style>
 <style>
 .submenu-popup {
