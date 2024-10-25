@@ -11,7 +11,7 @@
   "dependencies": {
     "element-theme": "^2.0.1",
     "element-ui": "^2.10.1",
-    "vue": "^2.6.10"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.2",
